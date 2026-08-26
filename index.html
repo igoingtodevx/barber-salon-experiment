@@ -1,0 +1,3286 @@
+<!doctype html>
+<html lang="de" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>EISEN &amp; KLINGE — Barbier &amp; Atelier Siegen Oberstadt</title>
+  <meta name="description" content="Klassisches Barbierhandwerk, traditionelle Nassrasur und präzise Haarschnitte am Siegberg. Löhrstraße 31, 57072 Siegen. Meisterbetrieb seit 2018.">
+  <meta name="theme-color" content="#F8F6F2">
+  
+  <!-- Typography Preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,300;1,400;1,600&family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       1. TOKEN SYSTEM & DUAL-THEME ARCHITECTURE (AWWWARDS ANTI-SLOP STANDARD)
+       ========================================================================== */
+    :root {
+      /* Shared Geometry Tokens */
+      --font-display: 'Cinzel', Georgia, serif;
+      --font-editorial: 'Cormorant Garamond', Georgia, serif;
+      --font-telemetry: 'JetBrains Mono', monospace;
+      --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      
+      --radius-sm: 2px;
+      --radius-md: 4px;
+      --radius-none: 0px;
+
+      --trans-fast: 160ms cubic-bezier(0.16, 1, 0.3, 1);
+      --trans-smooth: 320ms cubic-bezier(0.16, 1, 0.3, 1);
+      --trans-slow: 600ms cubic-bezier(0.16, 1, 0.3, 1);
+
+      --container-max: 1380px;
+      --grid-gutter: clamp(16px, 3vw, 40px);
+    }
+
+    /* Light Haute Editorial Theme (Carrara & Siegener Schiefer) */
+    html[data-theme="light"] {
+      --canvas: #F7F5EE;
+      --canvas-subtle: #EFECE3;
+      --surface: #E8E4D9;
+      --surface-elevated: #DFDAD0;
+      --ink: #171513;
+      --ink-muted: #6B645C;
+      --ink-faint: #9E968D;
+      --accent: #873B31; /* Siegerländer Montan-Rost */
+      --accent-soft: rgba(135, 59, 49, 0.12);
+      --accent-hover: #A0473C;
+      --border-hairline: rgba(23, 21, 19, 0.14);
+      --border-strong: rgba(23, 21, 19, 0.28);
+      --highlight: #2A2C2B;
+      --gold-subtle: #C29B38;
+      --status-open: #2D6A4F;
+      --status-closed: #873B31;
+      --shadow-ambient: 0 20px 40px -15px rgba(23, 21, 19, 0.07);
+    }
+
+    /* Dark Smoked Atelier Theme (Siegener Schiefer & Klingenstahl) */
+    html[data-theme="dark"] {
+      --canvas: #0D0E10;
+      --canvas-subtle: #141619;
+      --surface: #1B1E22;
+      --surface-elevated: #24282F;
+      --ink: #F5F3EC;
+      --ink-muted: #8E949F;
+      --ink-faint: #595F6B;
+      --accent: #C8845A; /* Glühender Klingenstahl */
+      --accent-soft: rgba(200, 132, 90, 0.14);
+      --accent-hover: #D8946B;
+      --border-hairline: rgba(245, 243, 236, 0.13);
+      --border-strong: rgba(245, 243, 236, 0.26);
+      --highlight: #F5F3EC;
+      --gold-subtle: #D4AF37;
+      --status-open: #52B788;
+      --status-closed: #E07A5F;
+      --shadow-ambient: 0 24px 48px -15px rgba(0, 0, 0, 0.5);
+    }
+
+    /* ==========================================================================
+       2. RESET & BASE ELEMENTS
+       ========================================================================== */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      background-color: var(--canvas);
+      color: var(--ink);
+    }
+
+    body {
+      font-family: var(--font-sans);
+      font-size: 15px;
+      line-height: 1.6;
+      background-color: var(--canvas);
+      color: var(--ink);
+      overflow-x: hidden;
+      transition: background-color var(--trans-smooth), color var(--trans-smooth);
+    }
+
+    ::selection {
+      background: var(--accent);
+      color: #FFF;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: color var(--trans-fast);
+    }
+
+    button, input, select, textarea {
+      font: inherit;
+      color: inherit;
+      background: transparent;
+      border: none;
+      outline: none;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    img, svg {
+      display: block;
+      max-width: 100%;
+    }
+
+    /* Layout Container & Grid Utility */
+    .container {
+      width: 100%;
+      max-width: var(--container-max);
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: var(--grid-gutter);
+      padding-right: var(--grid-gutter);
+    }
+
+    .hairline-b { border-bottom: 1px solid var(--border-hairline); }
+    .hairline-t { border-top: 1px solid var(--border-hairline); }
+    .hairline-r { border-right: 1px solid var(--border-hairline); }
+    .hairline-l { border-left: 1px solid var(--border-hairline); }
+
+    /* Typography Hierarchy Matrix */
+    .display-monolith {
+      font-family: var(--font-display);
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      line-height: 0.92;
+      text-transform: uppercase;
+    }
+
+    .editorial-italic {
+      font-family: var(--font-editorial);
+      font-style: italic;
+      font-weight: 300;
+      line-height: 1.15;
+    }
+
+    .telemetry {
+      font-family: var(--font-telemetry);
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    /* Architectural Unboxed Buttons (Zero Rounded-Full Pills) */
+    .btn-architectural {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 26px;
+      font-family: var(--font-telemetry);
+      font-size: 11.5px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-weight: 700;
+      background: var(--ink);
+      color: var(--canvas);
+      border: 1px solid var(--ink);
+      border-radius: var(--radius-none);
+      position: relative;
+      overflow: hidden;
+      transition: all var(--trans-fast);
+    }
+
+    .btn-architectural:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #FFF;
+    }
+
+    .btn-architectural:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--ink);
+      border: 1px solid var(--border-strong);
+    }
+
+    .btn-secondary:hover {
+      background: var(--surface-elevated);
+      border-color: var(--ink);
+      color: var(--ink);
+    }
+
+    /* Telemetry Pill Badge Alternative (Architectural Frame) */
+    .badge-telemetry {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 8px;
+      font-family: var(--font-telemetry);
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-weight: 600;
+      background: var(--canvas-subtle);
+      border: 1px solid var(--border-hairline);
+      color: var(--ink-muted);
+    }
+
+    .badge-telemetry .status-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--status-open);
+      animation: pulse-telemetry 2s infinite ease-in-out;
+    }
+
+    .badge-telemetry.closed .status-dot {
+      background: var(--status-closed);
+      animation: none;
+    }
+
+    @keyframes pulse-telemetry {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.85); }
+    }
+
+    /* ==========================================================================
+       3. TOP TELEMETRY STRIP & HEADER
+       ========================================================================== */
+    .top-telemetry {
+      background: var(--canvas-subtle);
+      font-size: 11px;
+      padding: 7px 0;
+      color: var(--ink-muted);
+    }
+
+    .top-telemetry-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .telemetry-group {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .telemetry-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Site Header */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--canvas);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      transition: background-color var(--trans-smooth), border-color var(--trans-smooth);
+    }
+
+    .header-inner {
+      display: grid;
+      grid-template-columns: 280px 1fr auto;
+      align-items: stretch;
+      min-height: 74px;
+    }
+
+    .brand-block {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-right: 28px;
+    }
+
+    .brand-title {
+      font-family: var(--font-display);
+      font-size: 21px;
+      letter-spacing: 0.12em;
+      font-weight: 900;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .brand-mark {
+      color: var(--accent);
+      font-size: 18px;
+    }
+
+    .brand-sub {
+      font-family: var(--font-telemetry);
+      font-size: 9.5px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      margin-top: 5px;
+    }
+
+    .nav-matrix {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+    }
+
+    .nav-link {
+      padding: 0 20px;
+      height: 100%;
+      display: inline-flex;
+      align-items: center;
+      font-family: var(--font-telemetry);
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: var(--ink-muted);
+      position: relative;
+      transition: color var(--trans-fast);
+    }
+
+    .nav-link:hover, .nav-link.active {
+      color: var(--ink);
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 20px;
+      right: 20px;
+      height: 2px;
+      background: transparent;
+      transition: background-color var(--trans-fast);
+    }
+
+    .nav-link:hover::after, .nav-link.active::after {
+      background: var(--accent);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding-left: 24px;
+    }
+
+    /* Segmented Theme Switcher */
+    .theme-switch {
+      display: inline-flex;
+      background: var(--canvas-subtle);
+      border: 1px solid var(--border-hairline);
+      padding: 2px;
+    }
+
+    .theme-btn {
+      padding: 6px 10px;
+      font-family: var(--font-telemetry);
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      color: var(--ink-muted);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      transition: all var(--trans-fast);
+    }
+
+    .theme-btn.active {
+      background: var(--ink);
+      color: var(--canvas);
+      font-weight: 700;
+    }
+
+    .mobile-menu-toggle {
+      display: none;
+      padding: 8px;
+      color: var(--ink);
+    }
+
+    /* ==========================================================================
+       4. HERO SECTION: 7-COL VS 5-COL ASYMMETRIC GRID
+       ========================================================================== */
+    .hero-section {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 7fr 5fr;
+      min-height: calc(100vh - 110px);
+    }
+
+    .hero-main-col {
+      padding: clamp(40px, 6vw, 80px) clamp(24px, 4vw, 60px) clamp(40px, 6vw, 80px) 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .hero-kicker-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .kicker-line {
+      width: 40px;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    .hero-heading {
+      font-size: clamp(42px, 5.8vw, 88px);
+      margin-bottom: 24px;
+      color: var(--ink);
+    }
+
+    .hero-heading span.italic-accent {
+      font-family: var(--font-editorial);
+      font-style: italic;
+      font-weight: 300;
+      text-transform: none;
+      color: var(--accent);
+      letter-spacing: 0;
+      display: inline-block;
+      margin-left: 4px;
+    }
+
+    .hero-statement {
+      font-size: clamp(16px, 1.2vw, 19px);
+      line-height: 1.6;
+      color: var(--ink-muted);
+      max-width: 580px;
+      margin-bottom: 38px;
+    }
+
+    .hero-actions-row {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 48px;
+    }
+
+    .hero-facts-matrix {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      background: var(--canvas);
+      border: 1px solid var(--border-hairline);
+    }
+
+    .hero-fact-cell {
+      padding: 16px 20px;
+      border-right: 1px solid var(--border-hairline);
+    }
+
+    .hero-fact-cell:last-child {
+      border-right: none;
+    }
+
+    .fact-label {
+      font-family: var(--font-telemetry);
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      margin-bottom: 4px;
+    }
+
+    .fact-value {
+      font-family: var(--font-sans);
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    /* Hero Side Column (Atelier Telemetry & Live Scheduler Preview) */
+    .hero-side-col {
+      background: var(--canvas-subtle);
+      padding: clamp(32px, 4vw, 56px);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+    }
+
+    .slate-blueprint-box {
+      border: 1px solid var(--border-strong);
+      padding: 24px;
+      background: var(--canvas);
+      position: relative;
+    }
+
+    .blueprint-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 1px dashed var(--border-hairline);
+    }
+
+    .blueprint-title {
+      font-family: var(--font-display);
+      font-size: 14px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .live-slot-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+
+    .live-slot-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 14px;
+      background: var(--canvas-subtle);
+      border: 1px solid var(--border-hairline);
+      font-family: var(--font-telemetry);
+      font-size: 12px;
+      transition: border-color var(--trans-fast);
+      cursor: pointer;
+    }
+
+    .live-slot-item:hover {
+      border-color: var(--accent);
+      background: var(--surface);
+    }
+
+    .slot-barber {
+      color: var(--ink-muted);
+      font-size: 11px;
+    }
+
+    .slot-time {
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .side-location-card {
+      margin-top: 32px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border-hairline);
+    }
+
+    .location-coord {
+      font-family: var(--font-telemetry);
+      font-size: 11px;
+      color: var(--ink-muted);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 6px;
+    }
+
+    /* ==========================================================================
+       5. SOURCE LOCK & SALON LEDGER (AWWWARDS ANTI-SLOP SECTION 01)
+       ========================================================================== */
+    .section-ledger {
+      background: var(--canvas);
+      padding: clamp(60px, 8vw, 110px) 0;
+    }
+
+    .section-header-row {
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 40px;
+      margin-bottom: 50px;
+      align-items: baseline;
+    }
+
+    .section-num {
+      font-family: var(--font-editorial);
+      font-size: clamp(32px, 4vw, 54px);
+      font-style: italic;
+      color: var(--accent);
+      line-height: 1;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(26px, 3.2vw, 44px);
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .section-intro-text {
+      font-size: 16px;
+      color: var(--ink-muted);
+      max-width: 680px;
+      line-height: 1.6;
+      margin-top: 12px;
+    }
+
+    .ledger-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border: 1px solid var(--border-hairline);
+      background: var(--canvas);
+    }
+
+    .ledger-cell {
+      padding: 28px 24px;
+      border-right: 1px solid var(--border-hairline);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 200px;
+      transition: background-color var(--trans-fast);
+    }
+
+    .ledger-cell:last-child {
+      border-right: none;
+    }
+
+    .ledger-cell:hover {
+      background: var(--canvas-subtle);
+    }
+
+    .ledger-tag {
+      font-family: var(--font-telemetry);
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .ledger-head {
+      font-family: var(--font-display);
+      font-size: 17px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--ink);
+    }
+
+    .ledger-desc {
+      font-size: 13.5px;
+      color: var(--ink-muted);
+      line-height: 1.5;
+    }
+
+    /* ==========================================================================
+       6. INTERACTIVE SERVICE MATRIX & PRICE LIST (HONEST LUXURY)
+       ========================================================================== */
+    .section-services {
+      background: var(--canvas-subtle);
+      padding: clamp(60px, 8vw, 110px) 0;
+      position: relative;
+    }
+
+    .service-filter-bar {
+      display: flex;
+      gap: 0;
+      border: 1px solid var(--border-hairline);
+      background: var(--canvas);
+      margin-bottom: 40px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .service-filter-bar::-webkit-scrollbar { display: none; }
+
+    .filter-tab-btn {
+      padding: 14px 22px;
+      font-family: var(--font-telemetry);
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: var(--ink-muted);
+      border-right: 1px solid var(--border-hairline);
+      white-space: nowrap;
+      transition: all var(--trans-fast);
+    }
+
+    .filter-tab-btn:last-child { border-right: none; }
+
+    .filter-tab-btn.active, .filter-tab-btn:hover {
+      background: var(--ink);
+      color: var(--canvas);
+    }
+
+    .service-table-unboxed {
+      display: flex;
+      flex-direction: column;
+      border: 1px solid var(--border-hairline);
+      background: var(--canvas);
+    }
+
+    .service-row {
+      display: grid;
+      grid-template-columns: 80px 1.5fr 1fr 120px 110px 180px;
+      align-items: center;
+      padding: 24px 28px;
+      border-bottom: 1px solid var(--border-hairline);
+      transition: background-color var(--trans-fast);
+    }
+
+    .service-row:last-child {
+      border-bottom: none;
+    }
+
+    .service-row:hover {
+      background: var(--surface);
+    }
+
+    .service-code {
+      font-family: var(--font-telemetry);
+      font-size: 12px;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .service-title-cell h4 {
+      font-family: var(--font-display);
+      font-size: 17px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      margin-bottom: 4px;
+      color: var(--ink);
+    }
+
+    .service-title-cell p {
+      font-size: 13px;
+      color: var(--ink-muted);
+      max-width: 420px;
+    }
+
+    .service-includes {
+      font-size: 12px;
+      color: var(--ink-muted);
+      font-family: var(--font-telemetry);
+      padding-right: 16px;
+    }
+
+    .service-duration {
+      font-family: var(--font-telemetry);
+      font-size: 12.5px;
+      color: var(--ink-muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .service-price {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 900;
+      color: var(--ink);
+    }
+
+    .service-cta {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .btn-service-select {
+      padding: 9px 16px;
+      font-family: var(--font-telemetry);
+      font-size: 10.5px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-weight: 700;
+      background: transparent;
+      border: 1px solid var(--border-strong);
+      color: var(--ink);
+      transition: all var(--trans-fast);
+    }
+
+    .btn-service-select:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #FFF;
+    }
+
+    /* ==========================================================================
+       7. CRAFT & PROTOCOL (4-PHASEN RITUAL AM SIEGBERG)
+       ========================================================================== */
+    .section-protocol {
+      background: var(--canvas);
+      padding: clamp(60px, 8vw, 110px) 0;
+    }
+
+    .protocol-stepper {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border: 1px solid var(--border-hairline);
+      margin-top: 40px;
+    }
+
+    .protocol-step {
+      padding: 32px 24px;
+      border-right: 1px solid var(--border-hairline);
+      position: relative;
+      background: var(--canvas);
+    }
+
+    .protocol-step:last-child {
+      border-right: none;
+    }
+
+    .protocol-phase-num {
+      font-family: var(--font-editorial);
+      font-size: 38px;
+      font-style: italic;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+
+    .protocol-phase-title {
+      font-family: var(--font-display);
+      font-size: 16px;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      color: var(--ink);
+    }
+
+    .protocol-phase-desc {
+      font-size: 13px;
+      color: var(--ink-muted);
+      line-height: 1.55;
+      margin-bottom: 18px;
+    }
+
+    .protocol-spec {
+      font-family: var(--font-telemetry);
+      font-size: 10.5px;
+      color: var(--ink-faint);
+      border-top: 1px dashed var(--border-hairline);
+      padding-top: 12px;
+    }
+
+    /* ==========================================================================
+       8. MASTER BARBERS (REAL TEAM & SPECIALIZATION MATRIX)
+       ========================================================================== */
+    .section-team {
+      background: var(--canvas-subtle);
+      padding: clamp(60px, 8vw, 110px) 0;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border: 1px solid var(--border-hairline);
+      background: var(--canvas);
+      margin-top: 40px;
+    }
+
+    .barber-card {
+      padding: 36px 30px;
+      border-right: 1px solid var(--border-hairline);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .barber-card:last-child {
+      border-right: none;
+    }
+
+    .barber-avatar-vector {
+      width: 100%;
+      height: 220px;
+      background: var(--surface);
+      border: 1px solid var(--border-hairline);
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .barber-vector-svg {
+      width: 120px;
+      height: 120px;
+      stroke: var(--ink);
+      fill: none;
+      stroke-width: 1.2;
+      opacity: 0.85;
+    }
+
+    .barber-name {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 4px;
+      color: var(--ink);
+    }
+
+    .barber-role {
+      font-family: var(--font-telemetry);
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+      font-weight: 600;
+    }
+
+    .barber-bio {
+      font-size: 13.5px;
+      color: var(--ink-muted);
+      line-height: 1.55;
+      margin-bottom: 24px;
+    }
+
+    .barber-stats-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      padding-top: 18px;
+      border-top: 1px solid var(--border-hairline);
+      margin-bottom: 24px;
+    }
+
+    .barber-stat-key {
+      font-family: var(--font-telemetry);
+      font-size: 10px;
+      color: var(--ink-faint);
+      text-transform: uppercase;
+    }
+
+    .barber-stat-val {
+      font-family: var(--font-sans);
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    /* ==========================================================================
+       9. LIVE INTERACTIVE BOOKING ENGINE (MODAL / OVERLAY & EMBEDDED)
+       ========================================================================== */
+    .booking-modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(13, 14, 16, 0.75);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      opacity: 0;
+      transition: opacity var(--trans-smooth);
+    }
+
+    .booking-modal-backdrop.active {
+      display: flex;
+      opacity: 1;
+    }
+
+    .booking-modal-container {
+      width: 100%;
+      max-width: 900px;
+      max-height: 90vh;
+      background: var(--canvas);
+      border: 1px solid var(--border-strong);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      box-shadow: var(--shadow-ambient);
+      transform: translateY(20px);
+      transition: transform var(--trans-smooth);
+    }
+
+    .booking-modal-backdrop.active .booking-modal-container {
+      transform: translateY(0);
+    }
+
+    .booking-modal-header {
+      padding: 20px 28px;
+      background: var(--canvas-subtle);
+      border-bottom: 1px solid var(--border-hairline);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .booking-modal-title {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ink);
+    }
+
+    .modal-close-btn {
+      width: 36px;
+      height: 36px;
+      border: 1px solid var(--border-hairline);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-telemetry);
+      font-size: 16px;
+      color: var(--ink);
+      transition: all var(--trans-fast);
+    }
+
+    .modal-close-btn:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #FFF;
+    }
+
+    /* Booking Progress Bar */
+    .booking-step-indicators {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-bottom: 1px solid var(--border-hairline);
+      background: var(--canvas);
+    }
+
+    .step-tab {
+      padding: 12px 16px;
+      border-right: 1px solid var(--border-hairline);
+      font-family: var(--font-telemetry);
+      font-size: 10.5px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .step-tab:last-child { border-right: none; }
+
+    .step-tab.active {
+      color: var(--ink);
+      font-weight: 700;
+      background: var(--surface);
+      border-bottom: 2px solid var(--accent);
+    }
+
+    .step-tab.completed {
+      color: var(--accent);
+    }
+
+    .booking-modal-body {
+      padding: 28px;
+      overflow-y: auto;
+      flex: 1;
+    }
+
+    /* Booking Step Panels */
+    .booking-step-panel {
+      display: none;
+    }
+
+    .booking-step-panel.active {
+      display: block;
+    }
+
+    .step-instruction {
+      font-size: 14px;
+      color: var(--ink-muted);
+      margin-bottom: 20px;
+    }
+
+    /* Service Select Grid in Modal */
+    .modal-service-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .modal-service-card {
+      display: grid;
+      grid-template-columns: 30px 1fr auto auto;
+      align-items: center;
+      gap: 16px;
+      padding: 14px 18px;
+      border: 1px solid var(--border-hairline);
+      background: var(--canvas);
+      cursor: pointer;
+      transition: all var(--trans-fast);
+    }
+
+    .modal-service-card:hover {
+      border-color: var(--border-strong);
+      background: var(--canvas-subtle);
+    }
+
+    .modal-service-card.selected {
+      border-color: var(--accent);
+      background: var(--accent-soft);
+    }
+
+    .service-check {
+      width: 18px;
+      height: 18px;
+      border: 1px solid var(--border-strong);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      color: transparent;
+    }
+
+    .modal-service-card.selected .service-check {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #FFF;
+    }
+
+    /* Barber Select in Modal */
+    .modal-barber-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .modal-barber-choice {
+      padding: 18px;
+      border: 1px solid var(--border-hairline);
+      background: var(--canvas);
+      cursor: pointer;
+      transition: all var(--trans-fast);
+    }
+
+    .modal-barber-choice:hover {
+      background: var(--canvas-subtle);
+      border-color: var(--border-strong);
+    }
+
+    .modal-barber-choice.selected {
+      border-color: var(--accent);
+      background: var(--accent-soft);
+    }
+
+    /* Date & Slot Picker in Modal */
+    .datetime-split {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 20px;
+    }
+
+    .date-selection-box, .time-selection-box {
+      border: 1px solid var(--border-hairline);
+      padding: 18px;
+      background: var(--canvas);
+    }
+
+    .date-scroll-list {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .date-pill-btn {
+      padding: 10px 8px;
+      border: 1px solid var(--border-hairline);
+      background: var(--canvas-subtle);
+      text-align: center;
+      cursor: pointer;
+      transition: all var(--trans-fast);
+    }
+
+    .date-pill-btn:hover {
+      border-color: var(--ink);
+    }
+
+    .date-pill-btn.selected {
+      background: var(--ink);
+      color: var(--canvas);
+      border-color: var(--ink);
+    }
+
+    .date-pill-btn.disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+
+    .date-pill-day {
+      font-family: var(--font-telemetry);
+      font-size: 10px;
+      text-transform: uppercase;
+    }
+
+    .date-pill-num {
+      font-family: var(--font-sans);
+      font-size: 15px;
+      font-weight: 700;
+      margin: 2px 0;
+    }
+
+    .time-slot-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+      margin-top: 12px;
+      max-height: 220px;
+      overflow-y: auto;
+    }
+
+    .time-slot-btn {
+      padding: 8px 10px;
+      font-family: var(--font-telemetry);
+      font-size: 12px;
+      border: 1px solid var(--border-hairline);
+      text-align: center;
+      background: var(--canvas-subtle);
+      transition: all var(--trans-fast);
+    }
+
+    .time-slot-btn:hover {
+      border-color: var(--accent);
+      background: var(--surface);
+    }
+
+    .time-slot-btn.selected {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #FFF;
+      font-weight: 700;
+    }
+
+    /* Customer Form in Modal */
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .form-group.full-width {
+      grid-column: 1 / -1;
+    }
+
+    .form-label {
+      font-family: var(--font-telemetry);
+      font-size: 10.5px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+    }
+
+    .form-input {
+      padding: 12px 14px;
+      border: 1px solid var(--border-strong);
+      background: var(--canvas-subtle);
+      color: var(--ink);
+      font-size: 14px;
+      transition: border-color var(--trans-fast);
+    }
+
+    .form-input:focus {
+      border-color: var(--accent);
+      background: var(--canvas);
+    }
+
+    /* Booking Summary & Actions in Modal */
+    .booking-modal-footer {
+      padding: 18px 28px;
+      background: var(--canvas-subtle);
+      border-top: 1px solid var(--border-hairline);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .modal-live-summary {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .summary-metric {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .metric-kicker {
+      font-family: var(--font-telemetry);
+      font-size: 9.5px;
+      color: var(--ink-faint);
+      text-transform: uppercase;
+    }
+
+    .metric-value {
+      font-family: var(--font-display);
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .modal-action-buttons {
+      display: flex;
+      gap: 12px;
+    }
+
+    /* Confirmation Step Box */
+    .confirmation-box {
+      border: 1px solid var(--border-hairline);
+      padding: 28px;
+      background: var(--canvas-subtle);
+      text-align: center;
+    }
+
+    .confirm-code {
+      font-family: var(--font-telemetry);
+      font-size: 22px;
+      letter-spacing: 0.18em;
+      color: var(--accent);
+      font-weight: 700;
+      margin: 12px 0 20px;
+    }
+
+    /* ==========================================================================
+       10. WAYFINDING & LOCATION (SIEGEN OBERSTADT MAP)
+       ========================================================================== */
+    .section-location {
+      background: var(--canvas);
+      padding: clamp(60px, 8vw, 110px) 0;
+    }
+
+    .location-grid {
+      display: grid;
+      grid-template-columns: 7fr 5fr;
+      border: 1px solid var(--border-hairline);
+      margin-top: 40px;
+    }
+
+    .vector-map-panel {
+      padding: 36px;
+      background: var(--canvas-subtle);
+      border-right: 1px solid var(--border-hairline);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+    }
+
+    .svg-siegen-map {
+      width: 100%;
+      height: 380px;
+      background: var(--canvas);
+      border: 1px solid var(--border-hairline);
+    }
+
+    .map-telemetry-overlay {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 18px;
+      font-family: var(--font-telemetry);
+      font-size: 11px;
+      color: var(--ink-muted);
+    }
+
+    .location-details-panel {
+      padding: 36px;
+      background: var(--canvas);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .transit-block {
+      margin-bottom: 24px;
+    }
+
+    .transit-title {
+      font-family: var(--font-display);
+      font-size: 14.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .transit-text {
+      font-size: 13.5px;
+      color: var(--ink-muted);
+      line-height: 1.5;
+    }
+
+    /* Opening Hours Matrix */
+    .hours-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: var(--font-telemetry);
+      font-size: 12px;
+      margin-top: 18px;
+    }
+
+    .hours-table tr {
+      border-bottom: 1px solid var(--border-hairline);
+    }
+
+    .hours-table tr:last-child {
+      border-bottom: none;
+    }
+
+    .hours-table td {
+      padding: 8px 0;
+    }
+
+    .hours-table td:last-child {
+      text-align: right;
+      font-weight: 600;
+    }
+
+    .hours-table tr.today-row {
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    /* ==========================================================================
+       11. SALON POLICY & FAQ ACCORDION (UNBOXED BORDERS)
+       ========================================================================== */
+    .section-faq {
+      background: var(--canvas-subtle);
+      padding: clamp(60px, 8vw, 110px) 0;
+    }
+
+    .faq-accordion-list {
+      border-top: 1px solid var(--border-hairline);
+      margin-top: 40px;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid var(--border-hairline);
+    }
+
+    .faq-trigger {
+      width: 100%;
+      padding: 24px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      text-align: left;
+      font-family: var(--font-display);
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--ink);
+      transition: color var(--trans-fast);
+    }
+
+    .faq-trigger:hover {
+      color: var(--accent);
+    }
+
+    .faq-icon-indicator {
+      font-family: var(--font-telemetry);
+      font-size: 18px;
+      color: var(--accent);
+      transition: transform var(--trans-smooth);
+    }
+
+    .faq-item.active .faq-icon-indicator {
+      transform: rotate(45deg);
+    }
+
+    .faq-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height var(--trans-smooth), padding var(--trans-smooth);
+    }
+
+    .faq-item.active .faq-content {
+      max-height: 240px;
+      padding-bottom: 24px;
+    }
+
+    .faq-text {
+      font-size: 14.5px;
+      color: var(--ink-muted);
+      line-height: 1.6;
+      max-width: 800px;
+    }
+
+    /* ==========================================================================
+       12. FOOTER & LEGAL MODALS
+       ========================================================================== */
+    .site-footer {
+      background: var(--canvas);
+      padding: 80px 0 40px;
+      border-top: 1px solid var(--border-hairline);
+    }
+
+    .footer-top-row {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1.5fr;
+      gap: 40px;
+      margin-bottom: 60px;
+    }
+
+    .footer-col-title {
+      font-family: var(--font-telemetry);
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 18px;
+    }
+
+    .footer-links-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      font-size: 13.5px;
+      color: var(--ink-muted);
+    }
+
+    .footer-links-list a:hover {
+      color: var(--accent);
+    }
+
+    .footer-bottom-row {
+      padding-top: 30px;
+      border-top: 1px solid var(--border-hairline);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      font-family: var(--font-telemetry);
+      font-size: 11px;
+      color: var(--ink-faint);
+    }
+
+    /* Legal Modal */
+    .legal-modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(13, 14, 16, 0.75);
+      backdrop-filter: blur(8px);
+      z-index: 1050;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .legal-modal-backdrop.active {
+      display: flex;
+    }
+
+    .legal-modal-card {
+      width: 100%;
+      max-width: 760px;
+      max-height: 85vh;
+      background: var(--canvas);
+      border: 1px solid var(--border-strong);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .legal-modal-content {
+      padding: 28px;
+      overflow-y: auto;
+      font-size: 13.5px;
+      line-height: 1.65;
+      color: var(--ink-muted);
+    }
+
+    .legal-modal-content h3 {
+      font-family: var(--font-display);
+      font-size: 16px;
+      color: var(--ink);
+      margin: 20px 0 8px;
+    }
+
+    .legal-modal-content h3:first-child { margin-top: 0; }
+
+    /* ==========================================================================
+       13. RESPONSIVE BREAKPOINTS (390PX - 1440PX)
+       ========================================================================== */
+    @media (max-width: 1100px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero-main-col { padding-right: 0; }
+      .hero-side-col { border-left: none; border-top: 1px solid var(--border-hairline); }
+      .ledger-grid { grid-template-columns: repeat(2, 1fr); }
+      .ledger-cell:nth-child(2) { border-right: none; }
+      .protocol-stepper { grid-template-columns: repeat(2, 1fr); }
+      .service-row { grid-template-columns: 60px 1fr 100px auto; }
+      .service-includes, .service-code { display: none; }
+      .location-grid { grid-template-columns: 1fr; }
+      .footer-top-row { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 800px) {
+      .header-inner { grid-template-columns: 1fr auto; }
+      .nav-matrix { display: none; }
+      .mobile-menu-toggle { display: block; }
+      .team-grid { grid-template-columns: 1fr; }
+      .barber-card { border-right: none; border-bottom: 1px solid var(--border-hairline); }
+      .datetime-split { grid-template-columns: 1fr; }
+      .modal-barber-grid { grid-template-columns: 1fr; }
+      .form-grid { grid-template-columns: 1fr; }
+      .section-header-row { grid-template-columns: 1fr; gap: 12px; }
+      .hero-facts-matrix { grid-template-columns: 1fr; }
+      .hero-fact-cell { border-right: none; border-bottom: 1px solid var(--border-hairline); }
+      .footer-top-row { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 500px) {
+      .ledger-grid { grid-template-columns: 1fr; }
+      .ledger-cell { border-right: none; }
+      .protocol-stepper { grid-template-columns: 1fr; }
+      .protocol-step { border-right: none; }
+      .service-row { grid-template-columns: 1fr auto; gap: 12px; }
+      .service-duration { display: none; }
+      .top-telemetry-inner { flex-direction: column; align-items: flex-start; }
+      .header-actions .btn-architectural { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Telemetry Bar -->
+  <aside class="top-telemetry hairline-b">
+    <div class="container top-telemetry-inner">
+      <div class="telemetry-group">
+        <div class="telemetry-item">
+          <span class="badge-telemetry" id="live-status-pill">
+            <span class="status-dot"></span>
+            <span id="live-status-text">Geöffnet bis 19:00 Uhr</span>
+          </span>
+        </div>
+        <div class="telemetry-item telemetry">
+          <span>Löhrstraße 31 · 57072 Siegen</span>
+        </div>
+      </div>
+      <div class="telemetry-group">
+        <a href="tel:+49271238910" class="telemetry-item telemetry" style="color:var(--ink);">
+          <span>Tel: +49 (0) 271 238 910</span>
+        </a>
+        <div class="telemetry-item telemetry" style="color:var(--ink-faint);">
+          <span>Gegr. 2018 · Meisterbetrieb</span>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Sticky Site Header -->
+  <header class="site-header hairline-b">
+    <div class="container header-inner">
+      <div class="brand-block">
+        <a href="#top" class="brand-title">
+          <span>EISEN &amp; KLINGE</span>
+          <span class="brand-mark">/</span>
+        </a>
+        <div class="brand-sub">Barbier &amp; Atelier Siegen</div>
+      </div>
+
+      <nav class="nav-matrix" aria-label="Hauptnavigation">
+        <a href="#services" class="nav-link">Dienstleistungen</a>
+        <a href="#handwerk" class="nav-link">Handwerk &amp; Klinge</a>
+        <a href="#barbiere" class="nav-link">Meister</a>
+        <a href="#anfahrt" class="nav-link">Siegen Oberstadt</a>
+        <a href="#faq" class="nav-link">Etikette</a>
+      </nav>
+
+      <div class="header-actions">
+        <!-- Segmented Dual-Theme Switcher -->
+        <div class="theme-switch" role="group" aria-label="Farbmodus">
+          <button type="button" class="theme-btn active" id="theme-light-btn" onclick="setAppTheme('light')">
+            <span>HELL</span>
+          </button>
+          <button type="button" class="theme-btn" id="theme-dark-btn" onclick="setAppTheme('dark')">
+            <span>DUNKEL</span>
+          </button>
+        </div>
+
+        <button type="button" class="btn-architectural" onclick="openBookingModal()">
+          <span>Termin buchen</span>
+        </button>
+
+        <button type="button" class="mobile-menu-toggle" aria-label="Menü öffnen" onclick="toggleMobileNav()">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- HERO SECTION (7-COL VS 5-COL ASYMMETRIC GRID) -->
+    <section class="hero-section hairline-b">
+      <div class="container">
+        <div class="hero-grid">
+          
+          <!-- Hero Main Column (7 Col) -->
+          <div class="hero-main-col hairline-r">
+            <div>
+              <div class="hero-kicker-row">
+                <span class="kicker-line"></span>
+                <span class="telemetry" style="color:var(--accent);">Siegerländer Handwerkstradition</span>
+              </div>
+
+              <h1 class="display-monolith hero-heading">
+                PRÄZISION AM <br>
+                SIEGBERG<span class="italic-accent">.</span>
+              </h1>
+
+              <p class="hero-statement">
+                Klassisches Barbierhandwerk, Solinger Klingenführung auf Siegener Schiefer und kompromisslose Formgebung im historischen Stadtkern der Oberstadt.
+              </p>
+
+              <div class="hero-actions-row">
+                <button type="button" class="btn-architectural" onclick="openBookingModal()">
+                  <span>Termin reservieren</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </button>
+                <a href="#services" class="btn-architectural btn-secondary">
+                  <span>Preise &amp; Leistungen</span>
+                </a>
+                <a href="https://wa.me/491708921140?text=Guten%20Tag%20Eisen%20%26%20Klinge,%20ich%20m%C3%B6chte%20einen%20Termin%20anfragen." class="btn-architectural btn-secondary" target="_blank" rel="noopener noreferrer" style="border-style:dashed;">
+                  <span>WhatsApp Schnellkontakt</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Hero Fact Matrix -->
+            <div class="hero-facts-matrix">
+              <div class="hero-fact-cell">
+                <div class="fact-label">Standort</div>
+                <div class="fact-value">Löhrstraße 31, Siegen</div>
+              </div>
+              <div class="hero-fact-cell">
+                <div class="fact-label">Fokus</div>
+                <div class="fact-value">Schnitt, Klinge &amp; Bart</div>
+              </div>
+              <div class="hero-fact-cell">
+                <div class="fact-label">Rhythmus</div>
+                <div class="fact-value">45 Min. Meistertakt</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hero Side Column (5 Col) -->
+          <div class="hero-side-col">
+            <div class="slate-blueprint-box">
+              <div class="blueprint-header">
+                <div>
+                  <div class="blueprint-title">Live Atelier Telemetrie</div>
+                  <div class="telemetry" style="color:var(--ink-faint); margin-top:2px;">Nächste freie Slots</div>
+                </div>
+                <span class="badge-telemetry">Heute Di–Sa</span>
+              </div>
+
+              <div class="live-slot-list" id="hero-quick-slots">
+                <div class="live-slot-item" onclick="quickBookSlot('Morgen 10:15', 'Lukas Schlüter')">
+                  <div>
+                    <strong style="color:var(--ink);">Oberstadt-Haarschnitt</strong>
+                    <div class="slot-barber">mit Lukas S. (Meister)</div>
+                  </div>
+                  <div class="slot-time">Morgen 10:15 Uhr →</div>
+                </div>
+                <div class="live-slot-item" onclick="quickBookSlot('Morgen 14:00', 'Yasin Demir')">
+                  <div>
+                    <strong style="color:var(--ink);">Klingenrasur &amp; Bart</strong>
+                    <div class="slot-barber">mit Yasin D. (Rasurspezialist)</div>
+                  </div>
+                  <div class="slot-time">Morgen 14:00 Uhr →</div>
+                </div>
+                <div class="live-slot-item" onclick="quickBookSlot('Übermorgen 16:30', 'Marius Becker')">
+                  <div>
+                    <strong style="color:var(--ink);">Meister-Ritual (Komplett)</strong>
+                    <div class="slot-barber">mit Marius B. (Styling)</div>
+                  </div>
+                  <div class="slot-time">Fr 16:30 Uhr →</div>
+                </div>
+              </div>
+
+              <div style="font-size:12px; color:var(--ink-muted); line-height:1.4;">
+                <strong>Walk-In Fenster:</strong> Di &amp; Do von 13:00 bis 14:30 Uhr ohne Voranmeldung nach Reihenfolge.
+              </div>
+            </div>
+
+            <div class="side-location-card">
+              <div class="telemetry" style="color:var(--accent); font-weight:700;">Altstadt-Atelier am Krönchen</div>
+              <div class="location-coord">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+                <span>50°52'29.3"N 8°01'27.8"E · 295 m ü. NHN</span>
+              </div>
+              <div style="font-size:12.5px; color:var(--ink-muted); margin-top:8px;">
+                2 Gehminuten vom Parkhaus Altstadt Löhrstraße. 8 Minuten Fußweg von den Siegtreppen.
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 01: SOURCE LOCK & SALON LEDGER -->
+    <section class="section-ledger hairline-b">
+      <div class="container">
+        <div class="section-header-row">
+          <div>
+            <div class="section-num">01 / LEDGER</div>
+            <div class="telemetry" style="color:var(--ink-faint); margin-top:6px;">Transparenz &amp; Fakten</div>
+          </div>
+          <div>
+            <h2 class="section-title">Eine Werkstatt ohne Kunstgriffe.</h2>
+            <p class="section-intro-text">
+              Jedes Detail unseres Salons in der Siegener Oberstadt basiert auf nachprüfbaren Fakten: echte Meisterprüfung, feste Terminzeiten ohne Überbuchung und werkzeuggerechte Behandlungsabläufe.
+            </p>
+          </div>
+        </div>
+
+        <div class="ledger-grid">
+          <div class="ledger-cell">
+            <div>
+              <div class="ledger-tag">FACT · 01</div>
+              <div class="ledger-head">Feste Slot-Dauern</div>
+              <div class="ledger-desc">Keine Hektik. Jeder Haarschnitt erhält 45 Minuten, das Meister-Ritual volle 75 Minuten konzentrierte Handwerksarbeit.</div>
+            </div>
+            <div class="telemetry" style="color:var(--ink-faint); margin-top:16px;">Taktung: 15–75 Min</div>
+          </div>
+
+          <div class="ledger-cell">
+            <div>
+              <div class="ledger-tag">FACT · 02</div>
+              <div class="ledger-head">Solinger Klingen</div>
+              <div class="ledger-desc">Wir rasieren ausschließlich mit handabgezogenem Solinger Kohlenstoffstahl und chirurgischen Wechselklingen für maximale Hygiene.</div>
+            </div>
+            <div class="telemetry" style="color:var(--ink-faint); margin-top:16px;">Herkunft: Solingen, NRW</div>
+          </div>
+
+          <div class="ledger-cell">
+            <div>
+              <div class="ledger-tag">FACT · 03</div>
+              <div class="ledger-head">Schiefer &amp; Eiche</div>
+              <div class="ledger-desc">Unser Salon nutzt massiven Siegerländer Schiefer als Kühlelement und heimisches Eichenholz für schwingungsfreie Arbeitsstationen.</div>
+            </div>
+            <div class="telemetry" style="color:var(--ink-faint); margin-top:16px;">Material: Siegerland Naturstein</div>
+          </div>
+
+          <div class="ledger-cell">
+            <div>
+              <div class="ledger-tag">RULE · 04</div>
+              <div class="ledger-head">Faire Storno-Etikette</div>
+              <div class="ledger-desc">Kostenlose Stornierung bis 12 Stunden vor Termin online oder telefonisch möglich. Respekt vor der Arbeitszeit aller Gäste.</div>
+            </div>
+            <div class="telemetry" style="color:var(--ink-faint); margin-top:16px;">Frist: 12h vor Beginn</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 02: SERVICE MATRIX & HONEST PRICING -->
+    <section id="services" class="section-services hairline-b">
+      <div class="container">
+        <div class="section-header-row">
+          <div>
+            <div class="section-num">02 / MENÜ</div>
+            <div class="telemetry" style="color:var(--ink-faint); margin-top:6px;">Preise &amp; Leistungen</div>
+          </div>
+          <div>
+            <h2 class="section-title">Klar deklarierte Handwerkskunst.</h2>
+            <p class="section-intro-text">
+              Alle Preise verstehen sich inklusive Beratung, Haarwäsche mit Kräutertonikum, Warmtuchkompresse und Heißschaum-Nackenausrasur. Keine versteckten Aufschläge.
+            </p>
+          </div>
+        </div>
+
+        <!-- Filter Bar -->
+        <div class="service-filter-bar" role="tablist">
+          <button type="button" class="filter-tab-btn active" onclick="filterServices('all', this)" role="tab">Alle Leistungen (6)</button>
+          <button type="button" class="filter-tab-btn" onclick="filterServices('cut', this)" role="tab">Haarschnitt (2)</button>
+          <button type="button" class="filter-tab-btn" onclick="filterServices('beard', this)" role="tab">Bart &amp; Klinge (2)</button>
+          <button type="button" class="filter-tab-btn" onclick="filterServices('ritual', this)" role="tab">Rituale &amp; Pflege (2)</button>
+        </div>
+
+        <!-- Unboxed Service Table -->
+        <div class="service-table-unboxed" id="service-list-container">
+          
+          <!-- Service 1 -->
+          <div class="service-row" data-category="cut">
+            <div class="service-code">01/CUT</div>
+            <div class="service-title-cell">
+              <h4>Der Oberstadt-Haarschnitt</h4>
+              <p>Individuelle Formberatung, Scheren- und Maschinenführung nach Kopfform, Nackenausrasur mit Rasiermesser, Styling mit matter Natur-Tonerde.</p>
+            </div>
+            <div class="service-includes">Inkl. Wäsche &amp; Heißtuch</div>
+            <div class="service-duration">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+              <span>45 Min</span>
+            </div>
+            <div class="service-price">42 €</div>
+            <div class="service-cta">
+              <button type="button" class="btn-service-select" onclick="bookSpecificService('01')">Buchen</button>
+            </div>
+          </div>
+
+          <!-- Service 2 -->
+          <div class="service-row" data-category="beard">
+            <div class="service-code">02/SHAVE</div>
+            <div class="service-title-cell">
+              <h4>Traditionelle Klingenrasur</h4>
+              <p>2 Phasen Heißtuch-Dampfkompresse, klassischer Rasierschaum im Kupfertiegel, 2 Durchgänge mit der Solinger Klinge, Alaunstein &amp; Sandelholz-Balsam.</p>
+            </div>
+            <div class="service-includes">Inkl. 2 Heißtücher &amp; Alaun</div>
+            <div class="service-duration">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+              <span>40 Min</span>
+            </div>
+            <div class="service-price">36 €</div>
+            <div class="service-cta">
+              <button type="button" class="btn-service-select" onclick="bookSpecificService('02')">Buchen</button>
+            </div>
+          </div>
+
+          <!-- Service 3 -->
+          <div class="service-row" data-category="beard">
+            <div class="service-code">03/BEARD</div>
+            <div class="service-title-cell">
+              <h4>Bartform &amp; Kantenarchitektur</h4>
+              <p>Freihandschnitt mit der Schere, Konturenschärfung an Wange und Hals mit Rasiermesser, Bartseife &amp; pflegendes Zedernholzöl.</p>
+            </div>
+            <div class="service-includes">Inkl. Konturenklinge &amp; Öl</div>
+            <div class="service-duration">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+              <span>30 Min</span>
+            </div>
+            <div class="service-price">28 €</div>
+            <div class="service-cta">
+              <button type="button" class="btn-service-select" onclick="bookSpecificService('03')">Buchen</button>
+            </div>
+          </div>
+
+          <!-- Service 4 -->
+          <div class="service-row" data-category="ritual">
+            <div class="service-code">04/RITUAL</div>
+            <div class="service-title-cell">
+              <h4>Das Siegerländer Meister-Ritual</h4>
+              <p>Vollständige Kombination: Oberstadt-Haarschnitt + Klingenrasur oder Bartmodellage + belebende Minz-Kopfmassage + Kaltgetränk nach Wahl.</p>
+            </div>
+            <div class="service-includes">Das Komplett-Erlebnis</div>
+            <div class="service-duration">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+              <span>75 Min</span>
+            </div>
+            <div class="service-price">72 €</div>
+            <div class="service-cta">
+              <button type="button" class="btn-service-select" onclick="bookSpecificService('04')">Buchen</button>
+            </div>
+          </div>
+
+          <!-- Service 5 -->
+          <div class="service-row" data-category="cut">
+            <div class="service-code">05/CARE</div>
+            <div class="service-title-cell">
+              <h4>Kopfhaut-Tiefenreinigung &amp; Packung</h4>
+              <p>Meersalz-Peeling zur Befreiung der Poren, Eukalyptus-Thermalpackung, Anregung der Haarwurzeln mit Durchblutungstonikum.</p>
+            </div>
+            <div class="service-includes">Inkl. Dampfhaube</div>
+            <div class="service-duration">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+              <span>20 Min</span>
+            </div>
+            <div class="service-price">22 €</div>
+            <div class="service-cta">
+              <button type="button" class="btn-service-select" onclick="bookSpecificService('05')">Buchen</button>
+            </div>
+          </div>
+
+          <!-- Service 6 -->
+          <div class="service-row" data-category="ritual">
+            <div class="service-code">06/COLOR</div>
+            <div class="service-title-cell">
+              <h4>Grau-Nuancierung / Beard Shading</h4>
+              <p>Dezente, aschige Mattierung erster grauer Haare oder unruhiger Bartzonen ohne unnatürlichen Farbhelm-Effekt.</p>
+            </div>
+            <div class="service-includes">Natürlicher Matt-Effekt</div>
+            <div class="service-duration">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+              <span>25 Min</span>
+            </div>
+            <div class="service-price">26 €</div>
+            <div class="service-cta">
+              <button type="button" class="btn-service-select" onclick="bookSpecificService('06')">Buchen</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 03: THE 4-PHASE CRAFT PROTOCOL -->
+    <section id="handwerk" class="section-protocol hairline-b">
+      <div class="container">
+        <div class="section-header-row">
+          <div>
+            <div class="section-num">03 / PROTOKOLL</div>
+            <div class="telemetry" style="color:var(--ink-faint); margin-top:6px;">Das 4-Phasen-Ritual</div>
+          </div>
+          <div>
+            <h2 class="section-title">Die Anatomie einer Nassrasur.</h2>
+            <p class="section-intro-text">
+              Jeder Klingenansatz folgt einem fest definierten Ablauf, der Hautreizungen eliminiert und Poren optimal vorbereitet.
+            </p>
+          </div>
+        </div>
+
+        <div class="protocol-stepper">
+          <div class="protocol-step">
+            <div class="protocol-phase-num">I</div>
+            <h3 class="protocol-phase-title">Thermal-Vorbereitung</h3>
+            <p class="protocol-phase-desc">75°C Eukalyptus-Dampfkompresse zur Entspannung der Gesichtsmuskulatur und Weichmachung des Barthaares.</p>
+            <div class="protocol-spec">Dauer: 5 Min · Hitze: 72–75°C</div>
+          </div>
+
+          <div class="protocol-step">
+            <div class="protocol-phase-num">II</div>
+            <h3 class="protocol-phase-title">Schaumführung</h3>
+            <p class="protocol-phase-desc">Dachshaar-Pinsel schlägt natürliche Talg- und Sandelholzseife im warmen Kupfertiegel zu mikroporösem Gleitschaum auf.</p>
+            <div class="protocol-spec">Tiegel: Reinkupfer geschmiedet</div>
+          </div>
+
+          <div class="protocol-step">
+            <div class="protocol-phase-num">III</div>
+            <h3 class="protocol-phase-title">Klingenzug</h3>
+            <p class="protocol-phase-desc">Solinger Rasiermesser im 30°-Winkel. Erster Durchgang mit dem Strich, zweiter Durchgang quer zur Faser für absolute Glätte.</p>
+            <div class="protocol-spec">Winkel: 30° Schnittgeometrie</div>
+          </div>
+
+          <div class="protocol-step">
+            <div class="protocol-phase-num">IV</div>
+            <h3 class="protocol-phase-title">Kaltabschluss</h3>
+            <p class="protocol-phase-desc">Kaltes Minztuch schließt die Poren sofort. Natur-Alaunstein neutralisiert Mikroläsionen, alkoholfreies Balsam schützt die Hautbarriere.</p>
+            <div class="protocol-spec">Kälte: 8°C Neroli-Kompresse</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 04: MASTER BARBERS (REAL TEAM & SPECIALIZATIONS) -->
+    <section id="barbiere" class="section-team hairline-b">
+      <div class="container">
+        <div class="section-header-row">
+          <div>
+            <div class="section-num">04 / MEISTER</div>
+            <div class="telemetry" style="color:var(--ink-faint); margin-top:6px;">Handwerker am Stuhl</div>
+          </div>
+          <div>
+            <h2 class="section-title">Drei Spezialisten. Ein Qualitätsstandard.</h2>
+            <p class="section-intro-text">
+              Bei uns schneidet kein wechselndes Aushilfspersonal. Jeder Barbier ist namentlich bekannt, ausgebildet und meisterhaft geschult.
+            </p>
+          </div>
+        </div>
+
+        <div class="team-grid">
+          <!-- Barber 1 -->
+          <article class="barber-card">
+            <div>
+              <div class="barber-avatar-vector">
+                <svg class="barber-vector-svg" viewBox="0 0 100 100">
+                  <circle cx="50" cy="35" r="20" />
+                  <path d="M20 85 C20 60, 35 55, 50 55 C65 55, 80 60, 80 85" />
+                  <path d="M40 38 Q50 48 60 38" />
+                  <line x1="38" y1="28" x2="62" y2="28" stroke-width="2" />
+                </svg>
+              </div>
+              <h3 class="barber-name">Lukas Schlüter</h3>
+              <div class="barber-role">Friseurmeister &amp; Gründer</div>
+              <p class="barber-bio">
+                Meisterprüfung Handwerkskammer Arnsberg. Spezialisiert auf klassische Scherenschnitte, englische Fade-Geometrien und anatomische Konturenberatung.
+              </p>
+            </div>
+            <div>
+              <div class="barber-stats-row">
+                <div>
+                  <div class="barber-stat-key">Erfahrung</div>
+                  <div class="barber-stat-val">12 Jahre</div>
+                </div>
+                <div>
+                  <div class="barber-stat-key">Spezialität</div>
+                  <div class="barber-stat-val">Scherenschnitt</div>
+                </div>
+              </div>
+              <button type="button" class="btn-architectural btn-secondary" style="width:100%;" onclick="openBookingWithBarber('Lukas Schlüter')">
+                <span>Bei Lukas buchen</span>
+              </button>
+            </div>
+          </article>
+
+          <!-- Barber 2 -->
+          <article class="barber-card">
+            <div>
+              <div class="barber-avatar-vector">
+                <svg class="barber-vector-svg" viewBox="0 0 100 100">
+                  <circle cx="50" cy="35" r="20" />
+                  <path d="M20 85 C20 60, 35 55, 50 55 C65 55, 80 60, 80 85" />
+                  <path d="M35 36 Q50 58 65 36 Z" fill="var(--ink-muted)" />
+                </svg>
+              </div>
+              <h3 class="barber-name">Yasin Demir</h3>
+              <div class="barber-role">Senior Barbier &amp; Rasurexperte</div>
+              <p class="barber-bio">
+                Ausgebildet in traditioneller osmanischer Rasiermesserkunst und moderner Bartmodellage. Experte für Heißtuchanwendungen, Konturenklingen und Bartverdichtung.
+              </p>
+            </div>
+            <div>
+              <div class="barber-stats-row">
+                <div>
+                  <div class="barber-stat-key">Erfahrung</div>
+                  <div class="barber-stat-val">9 Jahre</div>
+                </div>
+                <div>
+                  <div class="barber-stat-key">Spezialität</div>
+                  <div class="barber-stat-val">Nassrasur &amp; Bart</div>
+                </div>
+              </div>
+              <button type="button" class="btn-architectural btn-secondary" style="width:100%;" onclick="openBookingWithBarber('Yasin Demir')">
+                <span>Bei Yasin buchen</span>
+              </button>
+            </div>
+          </article>
+
+          <!-- Barber 3 -->
+          <article class="barber-card">
+            <div>
+              <div class="barber-avatar-vector">
+                <svg class="barber-vector-svg" viewBox="0 0 100 100">
+                  <circle cx="50" cy="35" r="20" />
+                  <path d="M20 85 C20 60, 35 55, 50 55 C65 55, 80 60, 80 85" />
+                  <path d="M32 30 Q50 18 68 30" stroke-width="2" />
+                </svg>
+              </div>
+              <h3 class="barber-name">Marius Becker</h3>
+              <div class="barber-role">Barbier &amp; Kopfhautberater</div>
+              <p class="barber-bio">
+                Fokus auf moderne Texturschnitte, Crop-Fades sowie Kopfhaut- und Haarpflegekuren mit pflanzlichen Essenzen. Experte für mattes Pomadenstyling.
+              </p>
+            </div>
+            <div>
+              <div class="barber-stats-row">
+                <div>
+                  <div class="barber-stat-key">Erfahrung</div>
+                  <div class="barber-stat-val">6 Jahre</div>
+                </div>
+                <div>
+                  <div class="barber-stat-key">Spezialität</div>
+                  <div class="barber-stat-val">Texture &amp; Care</div>
+                </div>
+              </div>
+              <button type="button" class="btn-architectural btn-secondary" style="width:100%;" onclick="openBookingWithBarber('Marius Becker')">
+                <span>Bei Marius buchen</span>
+              </button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 05: LOCATION, TRANSIT & OPENING HOURS (SIEGEN OBERSTADT) -->
+    <section id="anfahrt" class="section-location hairline-b">
+      <div class="container">
+        <div class="section-header-row">
+          <div>
+            <div class="section-num">05 / STANDORT</div>
+            <div class="telemetry" style="color:var(--ink-faint); margin-top:6px;">Siegen Oberstadt</div>
+          </div>
+          <div>
+            <h2 class="section-title">Löhrstraße 31 · 57072 Siegen.</h2>
+            <p class="section-intro-text">
+              Im Herzen der historischen Siegener Altstadt gelegen, direkt unterhalb der Nikolaikirche mit dem Krönchen.
+            </p>
+          </div>
+        </div>
+
+        <div class="location-grid">
+          <!-- Vector Blueprint Map -->
+          <div class="vector-map-panel">
+            <svg class="svg-siegen-map" viewBox="0 0 600 380" aria-label="Lageplan Siegen Oberstadt">
+              <!-- Background Grid -->
+              <defs>
+                <pattern id="map-grid" width="30" height="30" patternUnits="userSpaceOnUse">
+                  <path d="M 30 0 L 0 0 0 30" fill="none" stroke="var(--border-hairline)" stroke-width="0.7"/>
+                </pattern>
+              </defs>
+              <rect width="600" height="380" fill="url(#map-grid)" />
+
+              <!-- River Sieg -->
+              <path d="M 0 340 Q 200 310 400 330 T 600 300" fill="none" stroke="var(--accent)" stroke-width="8" opacity="0.4"/>
+              <text x="80" y="325" fill="var(--ink-muted)" font-family="var(--font-telemetry)" font-size="10" letter-spacing="2">FLUSS SIEG / SIEGTREPPEN</text>
+
+              <!-- Main Roads -->
+              <path d="M 120 380 L 190 240 L 320 180 L 450 100" fill="none" stroke="var(--ink)" stroke-width="2" stroke-dasharray="4,4" opacity="0.3"/>
+              <path d="M 280 380 L 320 180 L 360 80" fill="none" stroke="var(--ink)" stroke-width="3" opacity="0.5"/>
+              <text x="330" y="240" fill="var(--ink-muted)" font-family="var(--font-telemetry)" font-size="9">LÖHRSTRASSE</text>
+
+              <!-- Landmarks -->
+              <!-- Krönchen -->
+              <g transform="translate(420, 80)">
+                <circle cx="0" cy="0" r="14" fill="var(--surface)" stroke="var(--gold-subtle)" stroke-width="2" />
+                <path d="M -7 -2 L -5 5 L 0 0 L 5 5 L 7 -2 Z" fill="var(--gold-subtle)" />
+                <text x="18" y="4" fill="var(--ink)" font-family="var(--font-display)" font-size="11" font-weight="700">KRÖNCHEN (Nikolaikirche)</text>
+              </g>
+
+              <!-- Parkhaus Altstadt -->
+              <g transform="translate(240, 200)">
+                <rect x="-10" y="-10" width="20" height="20" fill="var(--canvas-subtle)" stroke="var(--ink-muted)" stroke-width="1.5" />
+                <text x="-4" y="4" fill="var(--ink)" font-family="var(--font-telemetry)" font-size="11" font-weight="700">P</text>
+                <text x="16" y="3" fill="var(--ink-muted)" font-family="var(--font-telemetry)" font-size="9">Parkhaus Altstadt (120m)</text>
+              </g>
+
+              <!-- Salon PIN: EISEN & KLINGE -->
+              <g transform="translate(320, 150)">
+                <circle cx="0" cy="0" r="18" fill="var(--accent)" opacity="0.25">
+                  <animate attributeName="r" values="12;24;12" dur="3s" repeatCount="indefinite"/>
+                </circle>
+                <circle cx="0" cy="0" r="7" fill="var(--accent)" stroke="#FFF" stroke-width="2" />
+                <rect x="14" y="-16" width="170" height="32" fill="var(--ink)" />
+                <text x="24" y="-2" fill="var(--canvas)" font-family="var(--font-display)" font-size="10.5" font-weight="700" letter-spacing="1">EISEN &amp; KLINGE</text>
+                <text x="24" y="10" fill="var(--accent)" font-family="var(--font-telemetry)" font-size="8.5">LÖHRSTRASSE 31</text>
+              </g>
+
+              <!-- Siegen Hbf -->
+              <g transform="translate(60, 260)">
+                <rect x="-8" y="-8" width="16" height="16" fill="var(--surface)" stroke="var(--ink-faint)" />
+                <text x="14" y="4" fill="var(--ink-muted)" font-family="var(--font-telemetry)" font-size="9">Siegen Hbf (9 Min)</text>
+              </g>
+            </svg>
+
+            <div class="map-telemetry-overlay">
+              <span>Orientierung: Siegen Oberstadt</span>
+              <span>GPS: 50.8748° N, 8.0244° E</span>
+            </div>
+          </div>
+
+          <!-- Location Info & Opening Hours -->
+          <div class="location-details-panel">
+            <div>
+              <div class="transit-block">
+                <h3 class="transit-title">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="2" y="5" width="20" height="14" rx="2"></rect>
+                    <line x1="2" y1="10" x2="22" y2="10"></line>
+                  </svg>
+                  <span>Parken &amp; Anreise mit dem PKW</span>
+                </h3>
+                <p class="transit-text">
+                  Parkhaus Altstadt (Löhrstraße 45) liegt nur 120 Meter bergab. Alternativ: Parkhaus Reichwalds Ecke (Heeserstraße, 4 Min Fußweg).
+                </p>
+              </div>
+
+              <div class="transit-block">
+                <h3 class="transit-title">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                  </svg>
+                  <span>Öffentlicher Nahverkehr</span>
+                </h3>
+                <p class="transit-text">
+                  Ab Siegen Hbf mit den City-Bussen C105 / C106 bis Haltestelle <em>Kölner Tor</em> oder <em>Rathaus/Markt</em>. Oder 8 Minuten Spaziergang über die Siegtreppen zur Oberstadt.
+                </p>
+              </div>
+
+              <div style="margin-top:24px; padding-top:18px; border-top:1px solid var(--border-hairline);">
+                <div class="telemetry" style="color:var(--accent); font-weight:700; margin-bottom:8px;">Öffnungszeiten Werkstatt</div>
+                <table class="hours-table" id="opening-hours-table">
+                  <tr data-day="2"><td>Dienstag</td><td>09:00 – 19:00 Uhr</td></tr>
+                  <tr data-day="3"><td>Mittwoch</td><td>09:00 – 19:00 Uhr</td></tr>
+                  <tr data-day="4"><td>Donnerstag</td><td>09:00 – 19:00 Uhr</td></tr>
+                  <tr data-day="5"><td>Freitag</td><td>09:00 – 19:00 Uhr</td></tr>
+                  <tr data-day="6"><td>Samstag</td><td>08:30 – 16:00 Uhr</td></tr>
+                  <tr data-day="0"><td>Sonntag &amp; Montag</td><td style="color:var(--ink-faint);">Geschlossen (Werkstattschliff)</td></tr>
+                </table>
+              </div>
+            </div>
+
+            <div style="margin-top:24px;">
+              <a href="https://maps.google.com/?q=L%C3%B6hrstra%C3%9Fe+31,+57072+Siegen" target="_blank" rel="noopener noreferrer" class="btn-architectural" style="width:100%;">
+                <span>Google Maps Route öffnen</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 06: SALON POLICY & FAQ -->
+    <section id="faq" class="section-faq hairline-b">
+      <div class="container">
+        <div class="section-header-row">
+          <div>
+            <div class="section-num">06 / ETIKETTE</div>
+            <div class="telemetry" style="color:var(--ink-faint); margin-top:6px;">Häufige Fragen &amp; Regeln</div>
+          </div>
+          <div>
+            <h2 class="section-title">Transparenz vor dem ersten Schnitt.</h2>
+            <p class="section-intro-text">
+              Klare Vereinbarungen sorgen für pünktliche Termine und eine ruhige, entspannte Atmosphäre im Salon.
+            </p>
+          </div>
+        </div>
+
+        <div class="faq-accordion-list">
+          <div class="faq-item">
+            <button type="button" class="faq-trigger" onclick="toggleFaq(this)" aria-expanded="false">
+              <span>Muss ich immer vorab einen Termin buchen oder geht auch Walk-In?</span>
+              <span class="faq-icon-indicator">+</span>
+            </button>
+            <div class="faq-content">
+              <p class="faq-text">
+                Wir arbeiten vorrangig auf Termin, um Wartezeiten auszuschließen. Ein festes Walk-In-Fenster ohne Termin bieten wir jeden <strong>Dienstag und Donnerstag von 13:00 bis 14:30 Uhr</strong> an. An allen anderen Tagen empfehlen wir die bequeme Online-Reservierung hier auf der Seite.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button type="button" class="faq-trigger" onclick="toggleFaq(this)" aria-expanded="false">
+              <span>Wie verhalte ich mich bei Verspätung oder Stornierung?</span>
+              <span class="faq-icon-indicator">+</span>
+            </button>
+            <div class="faq-content">
+              <p class="faq-text">
+                Termine können bis <strong>12 Stunden vorher</strong> kostenfrei storniert oder verschoben werden. Bei Verspätungen ab 10 Minuten müssen wir den Leistungsumfang anpassen, um den nachfolgenden Gast pünktlich bedienen zu können.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button type="button" class="faq-trigger" onclick="toggleFaq(this)" aria-expanded="false">
+              <span>Welche Zahlungsmethoden werden im Salon akzeptiert?</span>
+              <span class="faq-icon-indicator">+</span>
+            </button>
+            <div class="faq-content">
+              <p class="faq-text">
+                Wir akzeptieren alle gängigen Debit- und Kreditkarten (EC-Karte, Girocard, Visa, Mastercard), Apple Pay, Google Pay sowie Barzahlung vor Ort.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button type="button" class="faq-trigger" onclick="toggleFaq(this)" aria-expanded="false">
+              <span>Welche Bartlänge wird für eine traditionelle Nassrasur benötigt?</span>
+              <span class="faq-icon-indicator">+</span>
+            </button>
+            <div class="faq-content">
+              <p class="faq-text">
+                Für eine klassische Klingenrasur ist ein Bartwuchs von 2 bis 5 Tagen ideal. Bei Vollbärten empfehlen wir unseren Service <em>Bartform &amp; Kantenarchitektur</em>.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button type="button" class="faq-trigger" onclick="toggleFaq(this)" aria-expanded="false">
+              <span>Gibt es Geschenkgutscheine für die Rituale?</span>
+              <span class="faq-icon-indicator">+</span>
+            </button>
+            <div class="faq-content">
+              <p class="faq-text">
+                Ja, physische Gutscheine auf schwerem Siegerländer Büttenpapier sind direkt im Salon erhältlich oder können per Telefon/WhatsApp angefragt und zugesandt werden.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- INTERACTIVE BOOKING ENGINE MODAL -->
+  <div class="booking-modal-backdrop" id="booking-modal" role="dialog" aria-modal="true" aria-labelledby="modal-heading">
+    <div class="booking-modal-container">
+      
+      <!-- Modal Header -->
+      <div class="booking-modal-header">
+        <div>
+          <div class="telemetry" style="color:var(--accent);">Atelier-Reservierung</div>
+          <h2 id="modal-heading" class="booking-modal-title">Termin konfigurieren</h2>
+        </div>
+        <button type="button" class="modal-close-btn" aria-label="Schließen" onclick="closeBookingModal()">✕</button>
+      </div>
+
+      <!-- Step Progress Matrix -->
+      <div class="booking-step-indicators">
+        <div class="step-tab active" id="tab-step-1">1. Leistung</div>
+        <div class="step-tab" id="tab-step-2">2. Barbier</div>
+        <div class="step-tab" id="tab-step-3">3. Zeit</div>
+        <div class="step-tab" id="tab-step-4">4. Gast</div>
+      </div>
+
+      <!-- Modal Body (Steps) -->
+      <div class="booking-modal-body">
+        
+        <!-- STEP 1: SERVICE CHOICE -->
+        <div class="booking-step-panel active" id="panel-step-1">
+          <p class="step-instruction">Wählen Sie Ihre gewünschte Handwerksleistung aus:</p>
+          <div class="modal-service-grid">
+            <div class="modal-service-card selected" onclick="selectServiceInModal('01', 'Der Oberstadt-Haarschnitt', 42, 45, this)">
+              <div class="service-check">✓</div>
+              <div>
+                <strong>01 / Der Oberstadt-Haarschnitt</strong>
+                <div style="font-size:12px; color:var(--ink-muted);">Inkl. Haarwäsche, Konturschnitt, Nackenrasur &amp; Styling</div>
+              </div>
+              <div class="telemetry">45 Min</div>
+              <div class="service-price" style="font-size:16px;">42 €</div>
+            </div>
+
+            <div class="modal-service-card" onclick="selectServiceInModal('02', 'Traditionelle Klingenrasur', 36, 40, this)">
+              <div class="service-check">✓</div>
+              <div>
+                <strong>02 / Traditionelle Klingenrasur</strong>
+                <div style="font-size:12px; color:var(--ink-muted);">2-Phasen Heißtuch, Rasiermesser, Alaunstein &amp; Balsam</div>
+              </div>
+              <div class="telemetry">40 Min</div>
+              <div class="service-price" style="font-size:16px;">36 €</div>
+            </div>
+
+            <div class="modal-service-card" onclick="selectServiceInModal('03', 'Bartform & Kantenarchitektur', 28, 30, this)">
+              <div class="service-check">✓</div>
+              <div>
+                <strong>03 / Bartform &amp; Kantenarchitektur</strong>
+                <div style="font-size:12px; color:var(--ink-muted);">Freihandschnitt, Konturenrasur &amp; Zedernholzöl</div>
+              </div>
+              <div class="telemetry">30 Min</div>
+              <div class="service-price" style="font-size:16px;">28 €</div>
+            </div>
+
+            <div class="modal-service-card" onclick="selectServiceInModal('04', 'Das Siegerländer Meister-Ritual', 72, 75, this)">
+              <div class="service-check">✓</div>
+              <div>
+                <strong>04 / Das Siegerländer Meister-Ritual</strong>
+                <div style="font-size:12px; color:var(--ink-muted);">Komplett: Haarschnitt + Klingenrasur + Kopfmassage + Drink</div>
+              </div>
+              <div class="telemetry">75 Min</div>
+              <div class="service-price" style="font-size:16px;">72 €</div>
+            </div>
+
+            <div class="modal-service-card" onclick="selectServiceInModal('05', 'Kopfhaut-Tiefenreinigung', 22, 20, this)">
+              <div class="service-check">✓</div>
+              <div>
+                <strong>05 / Kopfhaut-Tiefenreinigung</strong>
+                <div style="font-size:12px; color:var(--ink-muted);">Meersalz-Peeling, Eukalyptus-Thermalpackung</div>
+              </div>
+              <div class="telemetry">20 Min</div>
+              <div class="service-price" style="font-size:16px;">22 €</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 2: BARBER CHOICE -->
+        <div class="booking-step-panel" id="panel-step-2">
+          <p class="step-instruction">Wählen Sie Ihren gewünschten Barbier oder den nächsten freien Meister:</p>
+          <div class="modal-barber-grid">
+            <div class="modal-barber-choice selected" onclick="selectBarberInModal('Beliebiger Meister', this)">
+              <div class="telemetry" style="color:var(--accent);">Flexibel</div>
+              <strong style="display:block; margin:4px 0;">Erster verfügbarer Barbier</strong>
+              <p style="font-size:12px; color:var(--ink-muted);">Maximale Terminauswahl und schnellste Verfügbarkeit.</p>
+            </div>
+
+            <div class="modal-barber-choice" onclick="selectBarberInModal('Lukas Schlüter (Meister)', this)">
+              <div class="telemetry" style="color:var(--ink-faint);">Meisterbetrieb</div>
+              <strong style="display:block; margin:4px 0;">Lukas Schlüter</strong>
+              <p style="font-size:12px; color:var(--ink-muted);">Spezialität: Klassischer Scherenschnitt &amp; Fades.</p>
+            </div>
+
+            <div class="modal-barber-choice" onclick="selectBarberInModal('Yasin Demir (Senior Barbier)', this)">
+              <div class="telemetry" style="color:var(--ink-faint);">Klingenspezialist</div>
+              <strong style="display:block; margin:4px 0;">Yasin Demir</strong>
+              <p style="font-size:12px; color:var(--ink-muted);">Spezialität: Heißtuch-Nassrasur &amp; Bartarchitektur.</p>
+            </div>
+
+            <div class="modal-barber-choice" onclick="selectBarberInModal('Marius Becker (Barbier)', this)">
+              <div class="telemetry" style="color:var(--ink-faint);">Styling &amp; Pflege</div>
+              <strong style="display:block; margin:4px 0;">Marius Becker</strong>
+              <p style="font-size:12px; color:var(--ink-muted);">Spezialität: Moderne Texturschnitte &amp; Kuren.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 3: DATE & TIME SELECTION -->
+        <div class="booking-step-panel" id="panel-step-3">
+          <p class="step-instruction">Wählen Sie Tag und Uhrzeit (Di–Sa geöffnet):</p>
+          <div class="datetime-split">
+            <div class="date-selection-box">
+              <div class="telemetry" style="color:var(--accent);">1. Tag wählen</div>
+              <div class="date-scroll-list" id="calendar-days-container">
+                <!-- Dynamically populated via JS -->
+              </div>
+            </div>
+
+            <div class="time-selection-box">
+              <div class="telemetry" style="color:var(--accent);">2. Uhrzeit wählen</div>
+              <div class="time-slot-grid" id="time-slots-container">
+                <!-- Dynamically populated via JS -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 4: GUEST INFO & CONFIRMATION -->
+        <div class="booking-step-panel" id="panel-step-4">
+          <p class="step-instruction">Bitte geben Sie Ihre Kontaktdaten für die Terminbestätigung ein:</p>
+          
+          <form id="booking-form" onsubmit="submitBooking(event)" class="form-grid">
+            <div class="form-group">
+              <label class="form-label" for="guest-name">Vor- und Nachname *</label>
+              <input type="text" id="guest-name" class="form-input" placeholder="z. B. Maximilian Weber" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="guest-phone">Mobilfunknummer (für SMS-Erinnerung) *</label>
+              <input type="tel" id="guest-phone" class="form-input" placeholder="z. B. 0170 1234567" required>
+            </div>
+
+            <div class="form-group full-width">
+              <label class="form-label" for="guest-email">E-Mail-Adresse *</label>
+              <input type="email" id="guest-email" class="form-input" placeholder="z. B. m.weber@beispiel.de" required>
+            </div>
+
+            <div class="form-group full-width">
+              <label class="form-label" for="guest-notes">Besondere Wünsche / Notizen (optional)</label>
+              <input type="text" id="guest-notes" class="form-input" placeholder="z. B. Espresso vorab, Bart besonders empfindlich...">
+            </div>
+
+            <div class="form-group full-width" style="margin-top:10px;">
+              <label style="display:flex; align-items:flex-start; gap:10px; font-size:12.5px; color:var(--ink-muted); cursor:pointer;">
+                <input type="checkbox" id="policy-agree" required style="margin-top:3px;">
+                <span>Ich akzeptiere die Stornierungsregeln (kostenlos bis 12h vorab) und die Datenschutzerklärung.</span>
+              </label>
+            </div>
+          </form>
+        </div>
+
+        <!-- STEP 5: SUCCESS CONFIRMATION RECEIPT -->
+        <div class="booking-step-panel" id="panel-step-5">
+          <div class="confirmation-box">
+            <div class="telemetry" style="color:var(--accent);">Buchung erfolgreich registriert</div>
+            <div class="confirm-code" id="booking-ref-code">EK-2026-8941</div>
+            <h3 style="font-family:var(--font-display); font-size:22px; margin-bottom:8px; color:var(--ink);">Wir freuen uns auf Ihren Besuch.</h3>
+            <p style="font-size:14px; color:var(--ink-muted); max-width:480px; margin:0 auto 24px;" id="booking-receipt-summary">
+              Ihr Termin für den <strong>Oberstadt-Haarschnitt</strong> bei <strong>Lukas Schlüter</strong> ist am <strong>Freitag, 28.08. um 10:15 Uhr</strong> fest für Sie reserviert.
+            </p>
+
+            <div style="display:flex; justify-content:center; gap:12px; flex-wrap:wrap;">
+              <button type="button" class="btn-architectural" onclick="downloadCalendarIcs()">
+                <span>Kalendereintrag (.ics) laden</span>
+              </button>
+              <button type="button" class="btn-architectural btn-secondary" onclick="sendBookingViaWhatsApp()">
+                <span>Auf WhatsApp bestätigen</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Modal Footer Summary & Controls -->
+      <div class="booking-modal-footer" id="modal-footer-bar">
+        <div class="modal-live-summary">
+          <div class="summary-metric">
+            <span class="metric-kicker">Gewählt</span>
+            <span class="metric-value" id="summary-service-name">Der Oberstadt-Haarschnitt</span>
+          </div>
+          <div class="summary-metric">
+            <span class="metric-kicker">Dauer</span>
+            <span class="metric-value" id="summary-service-duration">45 Min</span>
+          </div>
+          <div class="summary-metric">
+            <span class="metric-kicker">Gesamt</span>
+            <span class="metric-value" id="summary-service-price">42 €</span>
+          </div>
+        </div>
+
+        <div class="modal-action-buttons">
+          <button type="button" class="btn-architectural btn-secondary" id="btn-step-prev" onclick="changeBookingStep(-1)" style="display:none;">
+            <span>Zurück</span>
+          </button>
+          <button type="button" class="btn-architectural" id="btn-step-next" onclick="changeBookingStep(1)">
+            <span>Weiter zur Barbier-Wahl</span>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SITE FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top-row">
+        <div>
+          <div class="brand-title" style="font-size:18px;">
+            <span>EISEN &amp; KLINGE</span>
+            <span class="brand-mark">/</span>
+          </div>
+          <div class="brand-sub" style="margin-bottom:16px;">Barbier &amp; Atelier Siegen</div>
+          <p style="font-size:13px; color:var(--ink-muted); max-width:320px; line-height:1.6;">
+            Meisterbetrieb für klassische Rasur- und Schnittkultur am Siegberg. Löhrstraße 31, 57072 Siegen.
+          </p>
+        </div>
+
+        <div>
+          <div class="footer-col-title">Navigation</div>
+          <ul class="footer-links-list">
+            <li><a href="#services">Dienstleistungen</a></li>
+            <li><a href="#handwerk">Handwerk &amp; Klinge</a></li>
+            <li><a href="#barbiere">Meisterteam</a></li>
+            <li><a href="#anfahrt">Siegen Oberstadt</a></li>
+            <li><a href="#faq">Etikette &amp; FAQ</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer-col-title">Kontakt &amp; Zeiten</div>
+          <ul class="footer-links-list">
+            <li>Tel: +49 271 238 910</li>
+            <li>WhatsApp: +49 170 892 1140</li>
+            <li>Di – Fr: 09:00 – 19:00</li>
+            <li>Sa: 08:30 – 16:00</li>
+            <li>Mo &amp; So: Geschlossen</li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer-col-title">Atelier-Standort</div>
+          <p style="font-size:13px; color:var(--ink-muted); line-height:1.6; margin-bottom:14px;">
+            Löhrstraße 31<br>
+            57072 Siegen (Oberstadt)<br>
+            2 Min. zum Parkhaus Altstadt
+          </p>
+          <button type="button" class="btn-architectural btn-secondary" onclick="openBookingModal()" style="font-size:10px; padding:10px 18px;">
+            <span>Online Termin buchen</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="footer-bottom-row">
+        <div>
+          © 2018–2026 EISEN &amp; KLINGE Barbieratelier Siegen. Alle Rechte vorbehalten.
+        </div>
+        <div style="display:flex; gap:20px;">
+          <a href="javascript:void(0)" onclick="openLegalModal('impressum')">Impressum</a>
+          <a href="javascript:void(0)" onclick="openLegalModal('datenschutz')">Datenschutz</a>
+          <a href="javascript:void(0)" onclick="openLegalModal('agb')">Salon-AGB</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- LEGAL MODAL (IMPRESSUM & DATENSCHUTZ) -->
+  <div class="legal-modal-backdrop" id="legal-modal" role="dialog" aria-modal="true" aria-labelledby="legal-modal-heading">
+    <div class="legal-modal-card">
+      <div class="booking-modal-header">
+        <h2 id="legal-modal-heading" class="booking-modal-title">Rechtliche Hinweise</h2>
+        <button type="button" class="modal-close-btn" onclick="closeLegalModal()">✕</button>
+      </div>
+      <div class="legal-modal-content" id="legal-modal-body">
+        <!-- Content injected dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <!-- APPLICATION CONTROLLER SCRIPT (ZERO DEPENDENCIES) -->
+  <script>
+    // State Management
+    const AppState = {
+      theme: 'light',
+      booking: {
+        step: 1,
+        serviceId: '01',
+        serviceName: 'Der Oberstadt-Haarschnitt',
+        price: 42,
+        duration: 45,
+        barber: 'Beliebiger Meister',
+        date: '',
+        dateFormatted: '',
+        time: '',
+        guestName: '',
+        guestPhone: '',
+        guestEmail: '',
+        guestNotes: '',
+        refCode: ''
+      }
+    };
+
+    // Initialize on DOM Load
+    document.addEventListener('DOMContentLoaded', () => {
+      initTheme();
+      initLiveStatus();
+      initCalendarDays();
+      highlightTodayInHoursTable();
+    });
+
+    /* ==========================================================================
+       THEME MANAGEMENT (DUAL TOKEN SYSTEM)
+       ========================================================================== */
+    function initTheme() {
+      const saved = localStorage.getItem('ek_theme') || 'light';
+      setAppTheme(saved);
+    }
+
+    function setAppTheme(theme) {
+      AppState.theme = theme;
+      document.documentElement.setAttribute('data-theme', theme);
+      localStorage.setItem('ek_theme', theme);
+
+      const lightBtn = document.getElementById('theme-light-btn');
+      const darkBtn = document.getElementById('theme-dark-btn');
+      if (lightBtn && darkBtn) {
+        if (theme === 'light') {
+          lightBtn.classList.add('active');
+          darkBtn.classList.remove('active');
+        } else {
+          darkBtn.classList.add('active');
+          lightBtn.classList.remove('active');
+        }
+      }
+    }
+
+    /* ==========================================================================
+       LIVE OPENING HOURS & STATUS CALCULATOR
+       ========================================================================== */
+    function initLiveStatus() {
+      const now = new Date();
+      const day = now.getDay(); // 0 = Sun, 1 = Mon, ..., 6 = Sat
+      const hour = now.getHours();
+      const min = now.getMinutes();
+      const currentTime = hour + min / 60;
+
+      const pill = document.getElementById('live-status-pill');
+      const text = document.getElementById('live-status-text');
+
+      let isOpen = false;
+      let statusString = '';
+
+      if (day >= 2 && day <= 5) {
+        // Tuesday - Friday: 09:00 - 19:00
+        if (currentTime >= 9.0 && currentTime < 19.0) {
+          isOpen = true;
+          statusString = 'Heute geöffnet bis 19:00 Uhr';
+        } else if (currentTime < 9.0) {
+          statusString = 'Öffnet heute um 09:00 Uhr';
+        } else {
+          statusString = 'Geschlossen · Öffnet morgen 09:00 Uhr';
+        }
+      } else if (day === 6) {
+        // Saturday: 08:30 - 16:00
+        if (currentTime >= 8.5 && currentTime < 16.0) {
+          isOpen = true;
+          statusString = 'Heute geöffnet bis 16:00 Uhr';
+        } else if (currentTime < 8.5) {
+          statusString = 'Öffnet heute um 08:30 Uhr';
+        } else {
+          statusString = 'Geschlossen · Öffnet Dienstag 09:00 Uhr';
+        }
+      } else {
+        // Sunday & Monday
+        statusString = 'Ruhetag · Öffnet Dienstag 09:00 Uhr';
+      }
+
+      if (text && pill) {
+        text.textContent = statusString;
+        if (isOpen) {
+          pill.classList.remove('closed');
+        } else {
+          pill.classList.add('closed');
+        }
+      }
+    }
+
+    function highlightTodayInHoursTable() {
+      const day = new Date().getDay();
+      const rows = document.querySelectorAll('#opening-hours-table tr');
+      rows.forEach(r => {
+        const rowDay = parseInt(r.getAttribute('data-day'));
+        if (rowDay === day || (day === 1 && rowDay === 0)) {
+          r.classList.add('today-row');
+        }
+      });
+    }
+
+    /* ==========================================================================
+       SERVICE FILTERING (TAB SYSTEM)
+       ========================================================================== */
+    function filterServices(category, btn) {
+      document.querySelectorAll('.filter-tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const rows = document.querySelectorAll('.service-row');
+      rows.forEach(row => {
+        if (category === 'all' || row.getAttribute('data-category') === category) {
+          row.style.display = 'grid';
+        } else {
+          row.style.display = 'none';
+        }
+      });
+    }
+
+    /* ==========================================================================
+       FAQ ACCORDION CONTROLLER
+       ========================================================================== */
+    function toggleFaq(button) {
+      const item = button.parentElement;
+      const isExpanded = item.classList.contains('active');
+      
+      // Close all others
+      document.querySelectorAll('.faq-item').forEach(el => {
+        el.classList.remove('active');
+        el.querySelector('.faq-trigger').setAttribute('aria-expanded', 'false');
+        el.querySelector('.faq-icon-indicator').textContent = '+';
+      });
+
+      if (!isExpanded) {
+        item.classList.add('active');
+        button.setAttribute('aria-expanded', 'true');
+        item.querySelector('.faq-icon-indicator').textContent = '×';
+      }
+    }
+
+    /* ==========================================================================
+       BOOKING ENGINE: MODAL CONTROLLER & FLOW
+       ========================================================================== */
+    function openBookingModal() {
+      const modal = document.getElementById('booking-modal');
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+      setBookingStep(1);
+      updateSummaryFooter();
+    }
+
+    function closeBookingModal() {
+      const modal = document.getElementById('booking-modal');
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    function bookSpecificService(serviceId) {
+      const serviceCards = document.querySelectorAll('.modal-service-card');
+      serviceCards.forEach(card => {
+        if (card.getAttribute('onclick').includes(`'${serviceId}'`)) {
+          card.click();
+        }
+      });
+      openBookingModal();
+      setBookingStep(2); // Jump straight to barber choice
+    }
+
+    function openBookingWithBarber(barberName) {
+      openBookingModal();
+      const barberChoices = document.querySelectorAll('.modal-barber-choice');
+      barberChoices.forEach(choice => {
+        if (choice.textContent.includes(barberName)) {
+          choice.click();
+        }
+      });
+      setBookingStep(3); // Jump to date choice
+    }
+
+    function quickBookSlot(timeLabel, barberName) {
+      openBookingModal();
+      openBookingWithBarber(barberName);
+    }
+
+    function selectServiceInModal(id, name, price, duration, element) {
+      AppState.booking.serviceId = id;
+      AppState.booking.serviceName = name;
+      AppState.booking.price = price;
+      AppState.booking.duration = duration;
+
+      document.querySelectorAll('.modal-service-card').forEach(c => c.classList.remove('selected'));
+      element.classList.add('selected');
+      updateSummaryFooter();
+    }
+
+    function selectBarberInModal(barberName, element) {
+      AppState.booking.barber = barberName;
+      document.querySelectorAll('.modal-barber-choice').forEach(c => c.classList.remove('selected'));
+      element.classList.add('selected');
+      updateSummaryFooter();
+    }
+
+    function selectDateInModal(isoDate, formattedDate, element) {
+      AppState.booking.date = isoDate;
+      AppState.booking.dateFormatted = formattedDate;
+
+      document.querySelectorAll('.date-pill-btn').forEach(b => b.classList.remove('selected'));
+      element.classList.add('selected');
+
+      renderTimeSlotsForDate(isoDate);
+      updateSummaryFooter();
+    }
+
+    function selectTimeInModal(timeString, element) {
+      AppState.booking.time = timeString;
+      document.querySelectorAll('.time-slot-btn').forEach(b => b.classList.remove('selected'));
+      element.classList.add('selected');
+      updateSummaryFooter();
+    }
+
+    function updateSummaryFooter() {
+      const sName = document.getElementById('summary-service-name');
+      const sDur = document.getElementById('summary-service-duration');
+      const sPrice = document.getElementById('summary-service-price');
+
+      if (sName) sName.textContent = AppState.booking.serviceName;
+      if (sDur) sDur.textContent = `${AppState.booking.duration} Min`;
+      if (sPrice) sPrice.textContent = `${AppState.booking.price} €`;
+    }
+
+    function setBookingStep(step) {
+      AppState.booking.step = step;
+
+      // Update Step Panels
+      for (let i = 1; i <= 5; i++) {
+        const panel = document.getElementById(`panel-step-${i}`);
+        const tab = document.getElementById(`tab-step-${i}`);
+        if (panel) {
+          panel.classList.toggle('active', i === step);
+        }
+        if (tab) {
+          tab.classList.toggle('active', i === step);
+          tab.classList.toggle('completed', i < step);
+        }
+      }
+
+      // Update Buttons
+      const prevBtn = document.getElementById('btn-step-prev');
+      const nextBtn = document.getElementById('btn-step-next');
+      const footerBar = document.getElementById('modal-footer-bar');
+
+      if (step === 1) {
+        prevBtn.style.display = 'none';
+        nextBtn.style.display = 'inline-flex';
+        nextBtn.querySelector('span').textContent = 'Weiter zur Barbier-Wahl';
+      } else if (step === 2) {
+        prevBtn.style.display = 'inline-flex';
+        nextBtn.style.display = 'inline-flex';
+        nextBtn.querySelector('span').textContent = 'Weiter zur Terminauswahl';
+      } else if (step === 3) {
+        prevBtn.style.display = 'inline-flex';
+        nextBtn.style.display = 'inline-flex';
+        nextBtn.querySelector('span').textContent = 'Weiter zu Kontaktdaten';
+      } else if (step === 4) {
+        prevBtn.style.display = 'inline-flex';
+        nextBtn.style.display = 'inline-flex';
+        nextBtn.querySelector('span').textContent = 'Kostenpflichtig buchen';
+      } else if (step === 5) {
+        footerBar.style.display = 'none';
+      }
+    }
+
+    function changeBookingStep(delta) {
+      if (delta > 0) {
+        if (AppState.booking.step === 3 && (!AppState.booking.date || !AppState.booking.time)) {
+          alert('Bitte wählen Sie ein Datum und eine freie Uhrzeit aus.');
+          return;
+        }
+        if (AppState.booking.step === 4) {
+          const form = document.getElementById('booking-form');
+          if (!form.checkValidity()) {
+            form.reportValidity();
+            return;
+          }
+          submitBooking();
+          return;
+        }
+      }
+      setBookingStep(AppState.booking.step + delta);
+    }
+
+    /* ==========================================================================
+       DATE & TIME SLOT POPULATION (TIED TO SIEGEN OPERATING HOURS)
+       ========================================================================== */
+    function initCalendarDays() {
+      const container = document.getElementById('calendar-days-container');
+      if (!container) return;
+      container.innerHTML = '';
+
+      const dayNames = ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'];
+      const monthNames = ['Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez'];
+
+      let validCount = 0;
+      let offset = 0;
+
+      while (validCount < 6) {
+        const d = new Date();
+        d.setDate(d.getDate() + offset);
+        const dayOfWeek = d.getDay();
+        const iso = d.toISOString().split('T')[0];
+        const formatted = `${dayNames[dayOfWeek]}, ${d.getDate()}. ${monthNames[d.getMonth()]}`;
+
+        // Exclude Sunday (0) and Monday (1)
+        if (dayOfWeek !== 0 && dayOfWeek !== 1) {
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = `date-pill-btn ${validCount === 0 ? 'selected' : ''}`;
+          btn.innerHTML = `
+            <div class="date-pill-day">${dayNames[dayOfWeek]}</div>
+            <div class="date-pill-num">${d.getDate()}</div>
+            <div style="font-size:9.5px; color:var(--ink-faint);">${monthNames[d.getMonth()]}</div>
+          `;
+          btn.onclick = () => selectDateInModal(iso, formatted, btn);
+          container.appendChild(btn);
+
+          if (validCount === 0) {
+            AppState.booking.date = iso;
+            AppState.booking.dateFormatted = formatted;
+            renderTimeSlotsForDate(iso);
+          }
+          validCount++;
+        }
+        offset++;
+      }
+    }
+
+    function renderTimeSlotsForDate(isoDate) {
+      const container = document.getElementById('time-slots-container');
+      if (!container) return;
+      container.innerHTML = '';
+
+      // Generate slots based on day of week
+      const dateObj = new Date(isoDate);
+      const isSaturday = dateObj.getDay() === 6;
+      
+      const slots = isSaturday 
+        ? ['08:30', '09:15', '10:00', '11:00', '11:45', '13:00', '14:00', '15:15']
+        : ['09:00', '09:45', '10:30', '11:30', '13:30', '14:30', '15:30', '16:45', '17:30', '18:15'];
+
+      slots.forEach((slot, index) => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = `time-slot-btn ${index === 0 ? 'selected' : ''}`;
+        btn.textContent = `${slot} Uhr`;
+        btn.onclick = () => selectTimeInModal(slot, btn);
+        container.appendChild(btn);
+
+        if (index === 0) {
+          AppState.booking.time = slot;
+        }
+      });
+    }
+
+    /* ==========================================================================
+       SUBMISSION & CONFIRMATION RECEIPT
+       ========================================================================== */
+    function submitBooking(e) {
+      if (e) e.preventDefault();
+
+      AppState.booking.guestName = document.getElementById('guest-name').value;
+      AppState.booking.guestPhone = document.getElementById('guest-phone').value;
+      AppState.booking.guestEmail = document.getElementById('guest-email').value;
+      AppState.booking.guestNotes = document.getElementById('guest-notes').value;
+
+      // Generate Reference Code (e.g. EK-2026-8941)
+      const randomNum = Math.floor(1000 + Math.random() * 9000);
+      const refCode = `EK-2026-${randomNum}`;
+      AppState.booking.refCode = refCode;
+
+      // Update Confirmation Screen
+      document.getElementById('booking-ref-code').textContent = refCode;
+      document.getElementById('booking-receipt-summary').innerHTML = `
+        Ihr Termin für <strong>${AppState.booking.serviceName}</strong> (${AppState.booking.duration} Min · ${AppState.booking.price} €) bei <strong>${AppState.booking.barber}</strong> ist für <strong>${AppState.booking.dateFormatted} um ${AppState.booking.time} Uhr</strong> reserviert.<br><br>
+        Gast: <strong>${AppState.booking.guestName}</strong> (${AppState.booking.guestPhone}). Eine Bestätigung wurde an ${AppState.booking.guestEmail} versandt.
+      `;
+
+      // Persist to local storage
+      const existing = JSON.parse(localStorage.getItem('ek_saved_bookings') || '[]');
+      existing.push(AppState.booking);
+      localStorage.setItem('ek_saved_bookings', JSON.stringify(existing));
+
+      setBookingStep(5);
+    }
+
+    /* ==========================================================================
+       CALENDAR .ICS GENERATOR
+       ========================================================================== */
+    function downloadCalendarIcs() {
+      const b = AppState.booking;
+      const [year, month, day] = b.date.split('-').map(Number);
+      const [hour, minute] = b.time.split(':').map(Number);
+
+      const startDate = new Date(Date.UTC(year, month - 1, day, hour, minute));
+      const endDate = new Date(startDate.getTime() + b.duration * 60 * 1000);
+
+      const formatIcsTime = (d) => d.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
+
+      const icsContent = [
+        'BEGIN:VCALENDAR',
+        'VERSION:2.0',
+        'PRODID:-//Eisen und Klinge//Barbier Siegen//DE',
+        'CALSCALE:GREGORIAN',
+        'METHOD:PUBLISH',
+        'BEGIN:VEVENT',
+        `UID:${b.refCode}@eisenklinge-siegen.de`,
+        `DTSTAMP:${formatIcsTime(new Date())}`,
+        `DTSTART:${formatIcsTime(startDate)}`,
+        `DTEND:${formatIcsTime(endDate)}`,
+        `SUMMARY:${b.serviceName} - Eisen & Klinge Barbier Siegen`,
+        `DESCRIPTION:Termin bei ${b.barber} in der Siegener Oberstadt. Buchungscode: ${b.refCode}. Tel: +49 271 238 910`,
+        'LOCATION:EISEN & KLINGE\\, Löhrstraße 31\\, 57072 Siegen',
+        'STATUS:CONFIRMED',
+        'END:VEVENT',
+        'END:VCALENDAR'
+      ].join('\r\n');
+
+      const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
+      const link = document.createElement('a');
+      link.href = window.URL.createObjectURL(blob);
+      link.setAttribute('download', `Eisen-Klinge-Termin-${b.refCode}.ics`);
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+
+    function sendBookingViaWhatsApp() {
+      const b = AppState.booking;
+      const text = `Hallo Eisen & Klinge Team, ich habe soeben online gebucht:\n\nCode: ${b.refCode}\nLeistung: ${b.serviceName}\nDatum: ${b.dateFormatted} um ${b.time} Uhr\nBarbier: ${b.barber}\nName: ${b.guestName}`;
+      const url = `https://wa.me/491708921140?text=${encodeURIComponent(text)}`;
+      window.open(url, '_blank');
+    }
+
+    /* ==========================================================================
+       LEGAL MODAL (IMPRESSUM / DATENSCHUTZ / AGB)
+       ========================================================================== */
+    function openLegalModal(type) {
+      const modal = document.getElementById('legal-modal');
+      const body = document.getElementById('legal-modal-body');
+      const title = document.getElementById('legal-modal-heading');
+
+      if (type === 'impressum') {
+        title.textContent = 'Impressum & Angaben gem. § 5 DDG';
+        body.innerHTML = `
+          <h3>Angaben gemäß § 5 Digitale-Dienste-Gesetz (DDG)</h3>
+          <p>
+            <strong>EISEN &amp; KLINGE Barbieratelier Siegen e. K.</strong><br>
+            Löhrstraße 31<br>
+            57072 Siegen<br>
+            Deutschland
+          </p>
+          <h3>Vertretungsberechtigter Inhaber</h3>
+          <p>Lukas Schlüter (Friseurmeister nach deutschem Handwerksrecht)</p>
+          <h3>Kontakt</h3>
+          <p>
+            Telefon: +49 (0) 271 238 910<br>
+            E-Mail: kontakt@eisenklinge-siegen.de<br>
+            WhatsApp: +49 170 892 1140
+          </p>
+          <h3>Handwerkskammer &amp; Berufsrecht</h3>
+          <p>
+            Zuständige Kammer: Handwerkskammer Arnsberg, Brückenplatz 1, 59821 Arnsberg.<br>
+            Gesetzliche Berufsbezeichnung: Friseurmeister (verliehen in der Bundesrepublik Deutschland).<br>
+            Berufsrechtliche Regelungen: Handwerksordnung (HwO).
+          </p>
+          <h3>Umsatzsteuer-Identifikationsnummer</h3>
+          <p>USt-IdNr. gemäß § 27a UStG: DE 318 941 205</p>
+        `;
+      } else if (type === 'datenschutz') {
+        title.textContent = 'Datenschutzerklärung (DSGVO)';
+        body.innerHTML = `
+          <h3>1. Datenschutz auf einen Blick</h3>
+          <p>Wir erheben personenbezogene Daten (Name, Telefonnummer, E-Mail) ausschließlich zweckgebunden zur Durchführung und Abwicklung Ihrer Terminbuchungen im Salon.</p>
+          <h3>2. Verantwortliche Stelle</h3>
+          <p>Lukas Schlüter, Löhrstraße 31, 57072 Siegen. E-Mail: datenschutz@eisenklinge-siegen.de.</p>
+          <h3>3. Speicherung &amp; Rechte</h3>
+          <p>Daten werden nicht an unbefugte Dritte weitergegeben. Sie haben jederzeit das Recht auf unentgeltliche Auskunft über Herkunft, Empfänger und Zweck Ihrer gespeicherten personenbezogenen Daten sowie ein Recht auf Berichtigung oder Löschung.</p>
+        `;
+      } else {
+        title.textContent = 'Salon-Etikette & Allgemeine Geschäftsbedingungen';
+        body.innerHTML = `
+          <h3>1. Geltungsbereich</h3>
+          <p>Diese Bedingungen gelten für alle Dienstleistungen im Salon EISEN &amp; KLINGE in 57072 Siegen.</p>
+          <h3>2. Terminstornierung &amp; No-Show</h3>
+          <p>Termine können bis 12 Stunden vor Beginn kostenfrei storniert werden. Bei unentschuldigtem Nichterscheinen behalten wir uns die Geltendmachung von 50% des Leistungspreises vor.</p>
+          <h3>3. Zahlungsbedingungen</h3>
+          <p>Die Bezahlung erfolgt unmittelbar im Anschluss an die erbrachte Leistung vor Ort in bar oder per Kartenzahlung.</p>
+        `;
+      }
+
+      modal.classList.add('active');
+    }
+
+    function closeLegalModal() {
+      document.getElementById('legal-modal').classList.remove('active');
+    }
+
+    function toggleMobileNav() {
+      const nav = document.querySelector('.nav-matrix');
+      if (nav.style.display === 'flex') {
+        nav.style.display = 'none';
+      } else {
+        nav.style.display = 'flex';
+        nav.style.position = 'absolute';
+        nav.style.top = '100%';
+        nav.style.left = '0';
+        nav.style.right = '0';
+        nav.style.flexDirection = 'column';
+        nav.style.background = 'var(--canvas)';
+        nav.style.borderBottom = '1px solid var(--border-hairline)';
+        nav.style.padding = '16px 0';
+      }
+    }
+  </script>
+</body>
+</html>

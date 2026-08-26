@@ -1,0 +1,9 @@
+{
+  "name": "barber-salon-experiment",
+  "version": "1.0.0",
+  "private": true,
+  "description": "EISEN & KLINGE - Barber Salon Siegen Oberstadt",
+  "scripts": {
+    "test": "node verify.mjs"
+  }
+}
